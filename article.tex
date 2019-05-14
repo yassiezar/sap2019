@@ -5,8 +5,6 @@
 
 \usepackage{siunitx}
 \usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{todonotes}
 \usepackage[capitalise]{cleveref}
@@ -123,19 +121,11 @@ The ideas here can also be extended and applied to mainstream navigation tools, 
 A Tango-enabled device comes pre-equipped with powerful image-processing, localisation and depth-perception capabilities and is built on top of a standard Android platform, providing access to the entire set of input/output options that this operating system has to offer.
 The final system will use multiple feedback modes (vibration, audio and voice) to guide a user toward a target destination while providing information on any oncoming obstacles.
 
-%\begin{figure}
-  %\centering
-  %\begin{subfigure}[t]{0.45\textwidth}
 \begin{figure}
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/tango_headphone.png}
+  \includegraphics[width=0.5\columnwidth]{figures/tango_headphone.png}
   \caption{The Tango device and bone-conducting headset used by the participants. }\label{fig:tango-headphone}
 \end{figure}
-  %\end{subfigure}\hfill
-  %\begin{subfigure}[t]{0.45\textwidth}
-  %\end{subfigure}
-  %\caption{The hardware used during the experiment, as well as a diagram showing the Tango device's coordinate system. }
-%\end{figure}
 
 In this paper we focus on the audio feedback mode and discuss how it is used in our system.
 We present experiments we performed to determine its effectiveness at directing a user to complete a pointing task and how its parameters affect users' target-search performance.
@@ -147,7 +137,7 @@ Therefore, we opted for a tone with varying pitch to convey the angle adjustment
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/camera_coordinate.pdf}
+  \includegraphics[width=0.4\columnwidth]{figures/camera_coordinate.pdf}
   \caption{A diagram showing the Tango's frame of reference and the target's pan ($\phi$) and tilt ($\theta$) angles.}\label{fig:cam-coords}
 \end{figure}
 
@@ -222,7 +212,9 @@ To do this, we will use a combination of different feedback modes to facilitate 
 A large amount of data need to be translated from a visual form into a format that is useful to people with limited or no vision.
 We therefore plan to use a combination of voice, audio and vibration cues to translate visual navigation data as effectively as possible and overcome the bandwidth limitation of the human ear. 
 
-%The system is based on a concept proposed in~\cite{bellotto2013, lock2017portable}, which uses a Google Tango device.
+\begin{anonsuppress}
+The system is based on a concept proposed in~\cite{bellotto2013, lock2017portable}, which uses a Google Tango device.
+\end{anonsuppress}
 This is an Android-based cellphone or tablet device that comes equipped with an RGB-D camera to sense colour and depth.
 It combines an inertial measurement unit with powerful and robust landmark recognition and image processing algorithms to localise itself in real-time.
 An added benefit of this platform is its familiar, compact form-factor which will help overcome the hurdle of user-acceptance and usability.
@@ -239,7 +231,7 @@ The WiFi recording module is constantly monitoring the different parameter value
 
 \begin{figure}
   \centering
-  \includegraphics[clip=true, trim=50 120 80 50, width=0.4\textwidth]{figures/pipeline.pdf}
+  \includegraphics[clip=true, trim=0 120 80 50, width=1.0\columnwidth]{figures/pipeline.pdf}
   \caption{A diagram of the individual system components and their communication pipelines. $F$ indicates a feedback signal and $P$ a pose signal. }\label{fig:pipeline}
 \end{figure}
 
@@ -294,7 +286,7 @@ $f$ is given by \cref{eq:pitch-eq}, where $c$ can be found using the current pit
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/pitch_gain_functions.png}
+  \includegraphics[width=1.0\columnwidth]{figures/pitch_gain_functions.png}
   \caption{The pitch gain functions for the 3 different gain settings. }\label{fig:pitch-gain}
 \end{figure}
 
@@ -514,51 +506,50 @@ The results are summarised in Table~\ref{tab:results}.
 
 \begin{figure}
   \centering
-  \includegraphics[clip, trim=450 0 450 110, width=0.4\textwidth]{figures/err_lo.png}
-  \caption{\emph{Lo} setting. }
-  \label{fig:err-results-lo}
-\end{figure}
-\begin{figure}
-  \centering
-  \includegraphics[clip, trim=450 0 450 110, width=0.4\textwidth]{figures/err_med.png}
-  \caption{\emph{Med} setting. }
-  \label{fig:err-results-med}
+  \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
+  %\includegraphics[width=1.0\columnwidth]{figures/err_lo.png}
+  \caption{\emph{Lo} setting. }\label{fig:err-results-lo}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[clip, trim=450 0 450 60, width=0.4\textwidth]{figures/err_hi.png}
-  \caption{\emph{Hi} setting. }
-  \label{fig:err-results-hi}
+  \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
+  %\includegraphics[width=1.0\columnwidth]{figures/err_med.png}
+  \caption{\emph{Med} setting. }\label{fig:err-results-med}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[clip, trim=20 -70 100 100, width=0.4\textwidth]{figures/err_boxplot_medians.png}
-  \caption{Error median.}
-  \label{fig:err-boxplot-median}
+  \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
+  %\includegraphics[width=1.0\columnwidth]{figures/err_hi.png}
+  \caption{\emph{Hi} setting. }\label{fig:err-results-hi}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[clip, trim=80 -70 100 0, width=0.4\textwidth]{figures/err_boxplot_std.png}
-  \caption{Error standard deviations.}
-  \label{fig:err-boxplot-std}
+  \includegraphics[clip, trim=20 -70 100 100, width=0.8\columnwidth]{figures/err_boxplot_medians.png}
+  \caption{Error median.}\label{fig:err-boxplot-median}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[clip, trim=80 -70 100 0, width=0.8\columnwidth]{figures/err_boxplot_std.png}
+  \caption{Error standard deviations.}\label{fig:err-boxplot-std}
 \end{figure}
 
 \begin{table}
   \centering
-  \caption{A table of the pan and tilt angular error results for the target search experiment. The results include the absolute average error ($\mu_{abs}$), average error ($\mu$) and standard deviations ($\sigma$) given in radians, as well as the Spearman ($R$) correlation scores.}
-  \label{tab:results}
-  \begin{tabular}{|c|l|c|c|c|c|}
-    \hline
-    \multicolumn{2}{|c|}{} & $\mu_{abs}$ & $\mu$ & $\sigma$ & $R$ \\\hline\hline
-    & \emph{lo}  & 0.23 & -0.02 & 0.32 & 0.75 \\\cline{2-6}
-    Pan & \emph{med} & 0.21 & -0.01 & 0.28 & 0.77 \\\cline{2-6}
-    & \emph{hi}  & 0.22 & -0.05 & 0.31 & 0.75 \\\hline\hline
-    & \emph{lo}  & 0.40 & -0.14 & 0.46 & 0.38 \\\cline{2-6}
-    Tilt & \emph{med} & 0.32 & -0.12 & 0.36 & 0.48 \\\cline{2-6}
-    & \emph{hi}  & 0.34 & -0.16 & 0.39 & 0.55 \\\hline
+  \caption{A table of the pan and tilt angular error results for the target search experiment. The results include the absolute average error ($\mu_{abs}$), average error ($\mu$) and standard deviations ($\sigma$) given in radians, as well as the Spearman ($R$) correlation scores.}\label{tab:results}
+  \begin{tabular}{llcccc}
+    \toprule
+    \multicolumn{2}{c}{} & $\mu_{abs}$ & $\mu$ & $\sigma$ & $R$ \\\midrule
+    & \emph{lo}  & 0.23 & -0.02 & 0.32 & 0.75 \\%\cmidrule{2-6}
+    Pan & \emph{med} & 0.21 & -0.01 & 0.28 & 0.77 \\%\cmidrule{2-6}
+    & \emph{hi}  & 0.22 & -0.05 & 0.31 & 0.75 \\\midrule
+    & \emph{lo}  & 0.40 & -0.14 & 0.46 & 0.38 \\%\cmidrule{2-6}
+    Tilt & \emph{med} & 0.32 & -0.12 & 0.36 & 0.48 \\%\cmidrule{2-6}
+    & \emph{hi}  & 0.34 & -0.16 & 0.39 & 0.55 \\
+    \bottomrule
   \end{tabular}
 \end{table}
 
@@ -576,18 +567,18 @@ However, these results are in line with results from previous work~\cite{zwiers2
 
 \begin{table}
   \centering
-  \caption{A table summarising the target search results of the participants with partial eyesight (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}
-  \label{tab:vi-results}
-  \begin{tabular}{|c|c|cc|cc|cc|}
-    \hline
-    \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{\emph{lo}} & \multicolumn{2}{c|}{\emph{med}} & \multicolumn{2}{c|}{\emph{hi}} \\
-    \multicolumn{2}{|c|}{} & $\mu_l$ & $\sigma_l$ & $\mu_m$ & $\sigma_m$ & $\mu_h$ & $\sigma_h$ \\\hline\hline
-    & P1 & 0.25 & 0.44 & 0.21 & 0.45 & 0.29 & 0.40 \\ \cline{2-8}
-    Pan & P2 & 0.18 & 0.85 & 0.05 & 0.49 & -0.08 & 0.32 \\ \cline{2-8}
-    & P3 & -0.10 & 0.67 & -0.08 & 0.61 & -0.08 & 0.50 \\ \hline\hline
-    & P1 & -0.17 & 0.21 & -0.10 & 0.2 & -0.25 & 0.21 \\ \cline{2-8}
-    Tilt & P2 & -0.87 & 0.26 & -0.05 & 0.21 & -0.15 & 0.18 \\ \cline{2-8}
-    & P3 & -0.57 & 0.31 & -0.57 & 0.45 & -0.38 & 0.39 \\ \hline
+  \caption{A table summarising the target search results of the participants with partial eyesight (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}\label{tab:vi-results}
+  \begin{tabular}{llcccccc}
+    \toprule
+    \multicolumn{2}{c}{} & \multicolumn{2}{c}{\emph{lo}} & \multicolumn{2}{c}{\emph{med}} & \multicolumn{2}{c}{\emph{hi}} \\
+    \multicolumn{2}{c}{} & $\mu_l$ & $\sigma_l$ & $\mu_m$ & $\sigma_m$ & $\mu_h$ & $\sigma_h$ \\\midrule
+         & P1 &  0.25 & 0.44 &  0.21 & 0.45 &  0.29 & 0.40 \\% \cline{2-8}
+    Pan  & P2 &  0.18 & 0.85 &  0.05 & 0.49 & -0.08 & 0.32 \\% \cline{2-8}
+         & P3 & -0.10 & 0.67 & -0.08 & 0.61 & -0.08 & 0.50 \\ \midrule
+         & P1 & -0.17 & 0.21 & -0.10 & 0.2  & -0.25 & 0.21 \\% \cline{2-8}
+    Tilt & P2 & -0.87 & 0.26 & -0.05 & 0.21 & -0.15 & 0.18 \\% \cline{2-8}
+         & P3 & -0.57 & 0.31 & -0.57 & 0.45 & -0.38 & 0.39 \\% \hline
+    \bottomrule
   \end{tabular}
 \end{table}
 
