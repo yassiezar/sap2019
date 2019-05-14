@@ -204,26 +204,24 @@ However, to our knowledge no extensive work or experiments have been done to det
 
 \subsection{System Setup}
 
-Our ultimate goal is to deliver a navigation system that is capable of guiding a user with visual impairments on the last leg of their journey, e.g.\ to a specific aisle and shelf in a shop, using only a mobile phone.
+Our ultimate goal is to deliver a navigation system that can guide a user with visual impairments on the last leg of their journey, e.g.\ to a specific aisle and shelf in a shop, using only a mobile phone.
 A large amount of data need to be translated from a visual form into a format that is useful to people with limited or no vision.
 We therefore plan to use a combination of voice, audio and vibration cues to translate visual navigation data as effectively as possible and overcome the bandwidth limitation of the human ear. 
+However, for this paper, we only considered the spatialised audio mode and its variation in pitch in order to determine its effectiveness in conveying a target's pan and tilt angles.
 
 \begin{anonsuppress}
 The system is based on a concept proposed in~\cite{bellotto2013, lock2017portable}, which uses a Google Tango device.
 \end{anonsuppress}
-The system is based on a Google Tango tablet, an Android-based device that comes equipped with an RGB-D cameras to sense colour and depth.
+The navigation system is based on a Google Tango tablet, an Android-based device that comes equipped with an RGB-D cameras to sense colour and depth.
 It combines an inertial measurement unit with powerful and robust landmark recognition and image processing algorithms to localise itself in real-time.
 An added benefit of this platform is its familiar, compact form-factor which will help overcome the hurdle of user-acceptance and usability.
+We also use a set of bone-conducting headphones (see \cref{fig:tango-headphone}) that are placed externally on a user's head so that the system does not occlude the perception of real-world sounds and does not interfere with a user's normal hearing function.
+%In the future, we will use multiple feedback modes to provide the user with navigation and obstacle avoidance instructions.
 
-We use a set of bone-conducting headphones (see \cref{fig:tango-headphone}) that are placed externally on a user's head so that the system does not occlude the perception of real-world sounds and does not interfere with a user's normal hearing function.
-In the future, we will use multiple feedback modes to provide the user with navigation and obstacle avoidance instructions.
-However, for this paper, we only considered the spatialised audio mode and its variation in pitch in order to determine its effectiveness in conveying a target's pan and tilt angles.
-
-A diagram of the experimental system pipeline is shown in \cref{fig:pipeline}.
-Here, the arrows indicate the direction of the flow of information.
-When the user taps the Tango's screen, a new virtual target is generated and its coordinates are sent to the audio generation module, along with the Tango's current position and orientation.
-The audio generator then produces a tone based on the difference between the Tango and the target's positions (in the Tango's global coordinate system) and sends it to the audio output channel, which plays it back to the user.
-The WiFi recording module is constantly monitoring the different parameter values of the Tango and target's positions, as well as the system's output, and records it to a remotely stored datafile. 
+A diagram of the experimental system pipeline is shown in \cref{fig:pipeline}, where the arrows indicate the direction of the flow of information.
+When the user taps the Tango's screen, a new virtual target is generated and its coordinates are sent to the audio generation module, along with the device's current position and orientation.
+The audio generator then produces a tone based on the difference between the device and target's positions and sends it to the audio output channel, which plays it back to the user.
+The WiFi recording module is constantly monitoring the different parameter values of the device and target's positions, as well as the system's output, and records it to a remotely stored datafile. 
 
 \begin{figure}
   \centering
@@ -233,15 +231,15 @@ The WiFi recording module is constantly monitoring the different parameter value
 
 \subsection{Audio Interface}
 
-For the series of experiments performed in this work, only the audio feedback mode was used to interface with the user.
-The audio component is responsible for conveying the 2D position of a target on the vertical plane w.r.t.\ the Tango's coordinate system, showed in \cref{fig:cam-coords}, in terms of pan and tilt angles.
-In future system iterations, the distance to a target can be rendered by adjusting the audio signal's amplitude as a function of the distance.
+%For the series of experiments performed in this work, only the audio feedback mode was used to interface with the user.
+The audio component is responsible for conveying the 2D position of a target on the vertical plane, showed in \cref{fig:cam-coords}, in terms of pan and tilt angles.
+%In future system iterations, the distance to a target can be rendered by adjusting the audio signal's amplitude as a function of the distance.
 The audio signal is a continuous $\sim$\SI{10}{\hertz} sinusoidal sound wave that is played to the user through bone-conducting headphones.
-We select a sinusoidal wave because it is relatively simple to manipulate and analyse, which will be replaced by a richer, more natural tone at a later stage of the project. 
+We use a sinusoidal wave here because it is relatively simple to manipulate and analyse and will be replaced by a richer, more natural tone at a later stage. 
 
 The audio is spatialised in the pan dimension using the OpenAL\footnote{http://openal.org} sound library's HRTF, while the tilt angle is conveyed by varying the audio tone's pitch.
-We use this approach because the external set of bone-conducting headphones plays the sound through a user's cheekbones instead of their outer ears, bypassing the ears' pennae that provide humans their ability to localise elevated sound sources~\cite{roffler1968factors, algazi2001elevation}.
-This makes an HRTF less effective in conveying the target's tilt angle and therefore needs to be conveyed using another method; a varying pitch tone in this case.
+We use this approach because the external set of bone-conducting headphones plays the sound through a user's cheekbones instead of their outer ears, bypassing the ears' pennae that provide the ability to localise elevated sound sources~\cite{roffler1968factors, algazi2001elevation}.
+This makes an HRTF less effective in conveying the target's elevation and therefore needs to be conveyed using another method; by varying the tone's pitch in this case.
 The difference between the target's angular position and the device's angular orientation are used to generate the audio signals. 
 
 \subsubsection{Pan Direction}
@@ -260,7 +258,7 @@ Here, a high pitch means the target is above $C$ (i.e.\ the user should look up)
 This high/low association scheme is chosen because humans naturally associate high-pitched sounds with higher objects and lower-pitched noises with lower objects~\cite{pratt1930spatial, blauert1997spatial}.
 We use a logarithmic, octave-based gain function for the pitch, since an increase in octave provides a distinct perceptible change while keeping the timbre roughly constant~\cite{shepard1964circularity}.
 
-We wish to determine how the gradient of the pitch gain as a function of $\theta$ (i.e.\ $m = \frac{df}{d\theta}$) affects a user's performance, e.g.\ does steeper $\frac{df}{d\theta}$ lead to an increased target acquisition rate?
+We wish to determine how the gradient of the pitch gain as a function of $\theta$ (i.e.\ $m = \frac{df}{d\theta}$) affects a user's performance, e.g.\ does a greater $m$ lead to an increased target acquisition rate?
 For this we select 3 different pitch settings, referred to henceforth as $m_l$, $m_m$ and $m_h$ for the smallest, middle and highest gain gradients respectively. 
 To find these gradients, we set the maximum and minimum limits for $\theta$ and the maximum and minimum frequencies for $f$ for each respective setting.
 Furthermore, for the sake of consistency and between the different settings, each gradient generates the same pitch when $C$ is level with the target's tilt. 
@@ -268,7 +266,7 @@ Furthermore, for the sake of consistency and between the different settings, eac
 After practical tests with the device and headphones, we set the neutral, on-target tone to $f_{512} =$ \SI{512}{\hertz} for its audibility.
 For $m_l$, we set $f_{max}$ and $f_{min}$ to 1 octave higher and lower than $f_{512}$, giving limits of \SI{1024}{\hertz} and \SI{256}{\hertz} respectively.
 For $m_m$, the $f_{max}$ and $f_{min}$ are set to 2 octaves higher and lower than $f_{512}$ (\SI{2048}{\hertz} and \SI{128}{\hertz}) and $m_h$ to 3 octaves higher and lower (\SI{4096}{\hertz} and \SI{64}{\hertz}).
-We selected these limits for practical reasons, given the fact that the bone conducting headphones we use have low volume gain at very high and low frequencies, making it difficult to hear. 
+We selected these limits for practical reasons, given the fact that the bone conducting headphones we use have low volume gain at the frequency spectrum extremes, making it difficult to hear. 
 The values of $m_l, m_m, m_h$ are visualised in \cref{fig:pitch-gain}.
 
 \begin{figure}
