@@ -39,7 +39,7 @@
 
 \begin{document}
 
-\title{An Audio Interface for an Active Perception Navigation Aid for Blind People}
+\title{Audio Interface of an Active Perception Navigation Aid for People with Visual Impairments}
 
 \author{Jacobus C. Lock}
 \affiliation{%
@@ -81,9 +81,7 @@
 	Our aim is to build a portable active navigation system for the visually impaired that uses active perception techniques and a combination of feedback modes to identify a scene and guide a user to their destination.
 	Such a system requires a non-visual feedback interface and in this paper we investigate the effectiveness of a spatial audio tone with a varying pitch component, played through bone-conducting headphones, in conveying the pan and tilt angles of a target to the user in a pointing task.
 	The goal is to determine how changes to the rate of change of the pitch affects a user's performance.
-	For this, wee conducted a set of experiments with blindfolded and visually impaired users and found that the varying pitch component gives an average error of approximately \SI{20}{\degree} when searching for a target; in line with previous results from other authors.
-	%Furthermore, we are able to demonstrate that the audio interface adheres to Fitts's Law and used it as a metric to determine which pitch setting produces the optimal results.
-	%We discovered a trade-off between the speed and accuracy in the pointing task, which are maximised when the tone's pitch is adjusted to a low and high rate of change respectively. 
+	For this, we conducted a set of experiments with blindfolded and visually impaired users and found that the varying pitch component gives an average error of approximately \SI{20}{\degree} when searching for a target; in line with previous results from other authors.
 \end{abstract}
 
  \begin{CCSXML}
@@ -104,7 +102,7 @@
 \ccsdesc[500]{Human-centered computing~Empirical studies in HCI}
 \ccsdesc[300]{Human-centered computing~User studies}
 
-\keywords{Human-machine interface, vision impairment, spatialised sound, Fitts's Law, pointing task}
+\keywords{Human-machine interface, vision impairment, spatialised sound, varying pitch, pointing task}
 
 \maketitle
 \renewcommand{\shortauthors}{JC Lock et al.}
@@ -122,7 +120,7 @@ To this end, we are developing a mobile navigation system using a Google Project
 This system will ultimately allow users with visual impairments to reach a target location in the final leg of their journey, i.e.\ the so-called `last 10 yards' problem~\cite{google2016blind,bellotto2013}. 
 The ideas here can also be extended and applied to mainstream navigation tools, such as Google Maps.
 A Tango-enabled device comes pre-equipped with powerful image-processing, localisation and depth-perception capabilities and is built on top of a standard Android platform, providing access to the entire set of input/output options that this operating system has to offer.
-The final system will use multiple feedback modes (vibration, audio and voice) to guide a user toward a target destination while providing information on any oncoming obstacles.
+%The final system will use multiple feedback modes (vibration, audio and voice) to guide a user toward a target destination while providing information on any oncoming obstacles.
 
 \begin{figure}
   \centering
@@ -130,17 +128,26 @@ The final system will use multiple feedback modes (vibration, audio and voice) t
   \caption{The Tango device and bone-conducting headset the system is based on. }\label{fig:tango-headphone}
 \end{figure}
 
-In this paper we focus on the audio feedback mode and discuss how it is used in our system.
-We present experiments we performed to determine its effectiveness at directing a user to complete a pointing task and how its parameters affect users' target-search performance.
-For the pointing task, we presented blindfolded and partially sighted participants with a set of virtual targets, one after another, and asked them to point a camera to where they thought the targets were.
-The targets' pan and tilt angles w.r.t.\ the device's vertical plane, shown in \cref{fig:cam-coords}, were given to the participants through a spatial tone with varying pitch played via a set of bone-conducting headphones.
-We use the latter to not interfere with the user's normal hearing function, which people with visual impairments typically rely on.
-Because these headphones bypass the external structure of the ear responsible for localising a sound source's elevation, it is necessary to convey the target's tilt angle using another method.
-Therefore, we opted for a tone with varying pitch to convey the angle adjustment required to point the camera in a particular direction.
-A similar audio interface was successfully implemented and evaluated in~\cite{durette2008visuo}, but in this case we are providing guidance instructions for both pan and tilt dimensions and using a non-constant pitch.
-%\todo{can maybe cut out Fitts stuff}\uline{It is also unclear whether popular metrics, such as Fitts's Law~\cite{fitts1954information}, can be applied in this case.
-%Fitts's Law is a predictive model in the field of psychomotor research, often used in the human-machine interfacing field, that relates the time it takes a user to direct a pointing device toward a target as a function of the difficulty of finding the target (i.e.\ the ratio between the distance to the target and its size).
-%If a Fitts relationship is found, it can be used as a metric to anticipate whether future adjustments to the pitch's rate of change will have a positive effect on target-search performance.}
+For this work, we implemented and evaluate an audio guidance mode that will be implemented in the guidance system to provide navigation instructions to the user. 
+To evaluate this guidance mode, we conducted a set of experiments involving a target-search task where the participants were guided to point a camera to a set of virtual targets with the audio instructions.
+The system uses a set of bone-conducting headphones to provide the audio instructions, with the latter being used to avoid interfering with a user's normal hearing function; something people with limited vision typically rely upon. 
+However, this type of headphones bypass the external structure of the ear which provide the ability to localise a sound source's elevation.
+We therefore use a tone of varying pitch to convey the target's tilt position w.r.t.\ the camera's pointing vector, $C$, pictured in \cref{fig:cam-coords}.
+The tone is spatialised to provide the target's position in the pan dimension.
+A similar interface can be found in~\cite{durette2008visuo}, where they used a varying pitch component without spatialising the tone. 
+However, they did not investigate this interface's target-finding accuracy.
+Furthermore, we wish to determine how changing the pitch's rate of change will affect target-finding performance. 
+Therefore, this work contributes by determining how accurately a spatialised tone with varying pitch can direct a user towards a target, and how the pitch's rate of change affects this accuracy.
+
+%In this paper we focus on the audio feedback mode and discuss how it is used in our system.
+%We present experiments we performed to determine its effectiveness at directing a user to complete a pointing task and how its parameters affect users' target-search performance.
+%For the pointing task, we presented blindfolded and partially sighted participants with a set of virtual targets, one after another, and asked them to point a camera to where they thought the targets were.
+%The targets' pan and tilt angles w.r.t.\ the device's vertical plane, shown in \cref{fig:cam-coords}, were given to the participants through a spatial tone with varying pitch played via a set of bone-conducting headphones.
+%We use the latter to not interfere with the user's normal hearing function, which people with visual impairments typically rely on.
+%Because these headphones bypass the external structure of the ear responsible for localising a sound source's elevation, it is necessary to convey the target's tilt angle using another method.
+%Therefore, we opted for a tone with varying pitch to convey the angle adjustment required to point the camera in a particular direction.
+%A similar audio interface was successfully implemented and evaluated in~\cite{durette2008visuo}, but in this case we are providing guidance instructions for both pan and tilt dimensions and using a non-constant pitch.
+%This work contributes by providing the first experimental results on how well a tone with varying pitches and rates of change can convey a target's tilt angle when using a mobile device with bone-conducting headsets. 
 
 \begin{figure}
   \centering
@@ -148,25 +155,16 @@ A similar audio interface was successfully implemented and evaluated in~\cite{du
   \caption{A diagram showing the device's frame of reference and the target's pan and tilt angles.}\label{fig:cam-coords}
 \end{figure}
 
-This work contributes by providing the first experimental results on how well a tone with varying pitch can convey a target's tilt angle when using a mobile device with bone-conducting headsets. 
-
-%The main contributions of this paper are two-fold: 
-%\begin{itemize}
-  %\item we provide the first experimental results on how well a tone with varying pitch can convey a target's tilt angle when using a mobile device with bone-conducting headsets; 
-  %\item we show that this sound-based human-machine interface conforms to Fitts's Law and can provide a useful metric of performance for similar mobile user interfaces.
-%\end{itemize}
-
 The remainder of this paper is organised as follows: \cref{sec:lit-review} gives an overview of existing navigation systems and audio interfaces for people living with visual impairments.
 \cref{sec:portable-navigation} discusses the navigation device's hardware and interface setup and describes how the target's position is conveyed to the user.
-The experiments that were conducted are explained in \cref{sec:experiments} and the results are presented and discussed in \cref{sec:results}. 
+The experiment we conducted are explained in \cref{sec:experiments} and the results are presented and discussed in \cref{sec:results}. 
 Finally, \cref{sec:conclusion} concludes this paper with a summary of the findings and comments on our future work. 
 
 \section{Previous Work}\label{sec:lit-review}
 
 \todo{chop up this section. Make anonymous}
 Attempting to deliver a system that allows people with visual impairments to independently navigate and accomplish everyday tasks is not new; in fact, there are multiple commercial systems and research prototypes already available on the market.
-One approach that has been investigated is to outfit the existing white walking cane with various sensors,
-such as sonar, radar, motor encoders, etc.~\cite{ulrich1997, marion2008batcane} to warn the user of upcoming obstacles, instead of relying on haptic feedback from the impact between the cane and the obstacle.
+One approach that has been investigated is to outfit the existing white walking cane with various sensors, such as sonar, radar, motor encoders, etc.~\cite{ulrich1997, marion2008batcane} to warn the user of upcoming obstacles, instead of relying on haptic feedback from the impact between the cane and the obstacle.
 Another approach is to outfit a walking cane to act as a radio-frequency identification (RFID) antenna that can read a set of RFID tags placed at strategic locations around the environment at key spots or along a path~\cite{faria2010electronic, willis2005}.
 This modification to the traditional cane is more discreet than the systems mentioned earlier and has been shown to work well.
 Bluetooth tags and a smartphone can also be used in a similar manner~\cite{sato2017navcog3}.
@@ -186,25 +184,14 @@ With VAR systems, it is not clear how unknown environments, where markers have n
 Spatial audio has also been considered to convey the direction of a target.
 Experiments have previously determined that people are able to find the location of a stationary sound source with an error of $\pm$\SI{35}{\degree}, in both the pan and tilt dimensions~\cite{zwiers2001spatial}, for both early-blind and normally-sighted people.
 However, in~\cite{lewald2013exceptional, lessard1998early} it was found that the blind have a clear advantage in localisation accuracy over sighted people when presented with more difficult tasks, such as targets in motion and narrow-band stimuli, with~\cite{lewald2013exceptional} reporting an average absolute localisation error of around \SI{10}{\degree} in the pan and tilt dimensions.
-Other authors found that the minimum difference in the spatial sound's angle for the user to be able to perceive movement is approximately \SI{1.7}{\degree}. During the experiments, an audio speaker was physically manoeuvred to provide the participant with a spatialised sound tone~\cite{ashmead1998spatial}.
+Other authors found that the minimum difference in the spatial sound's angle for the user to be able to perceive movement is approximately \SI{1.7}{\degree}. 
+During these experiments, an audio speaker was physically manoeuvred to provide the participant with a spatialised sound tone~\cite{ashmead1998spatial}.
 Researchers have also tried using simulated spatial audio to inform the user from which direction a sound is originating~\cite{holland2002audiogps, kammoun2012navigation, rebillat2009smart, menelas2010audio, wilson2007swan, zotkin2004rendering}.
 In these works, a sound was played through a set of headphones and the source spatialised with a head-related transfer function (HRTF), tricking the listener into thinking the sound source was located at some arbitrary 3D location.
 Various audition techniques and methods were then used to guide the user along a path.
 Other authors have also provided a framework for evaluating the quality of this 3D sound in terms of its psychoacoustic properties~\cite{guastavino2004perceptual, nicol2014roadmap}.
 There are also experimental results about how well users can find targets presented with spatial sound in the tilt and panning dimensions with normal headphones~\cite{katz2011spatial, zwiers2001spatial}, as well as work that has shown similar levels of localisation performance between normal and bone-conducting headphones in the pan dimension~\cite{macdonald2006spatial}.
-However, to our knowledge no extensive work or experiments have been done to determine how well users respond to tilt adjustment instructions using a tone with \emph{varying pitch}, in particular when using bone-conducting headphones. 
-
-%\todo{cut?}\uline{Researchers have previously used Fitts's Law~\cite{fitts1954information}, and more recently MacKenzie's modified version of it~\cite{mackenzie1992fitts}, as a metric to evaluate the performance of a spatial audio HMI\@.
-%Fitts's Law was originally proposed for visual target search tasks.
-%However, it has been applied in non-visual target search tasks as well.
-%For example, experiments with a haptic feedback pointing device have been performed to evaluate how effective it was at directing a user towards a target~\cite{ahmaniemi2009augmented}.
-%The authors showed that the search time adheres to Fitts's Law.
-%However, they also note that it is not a perfect fit, citing the fact that Fitts's Law does not take into account a user's search strategy.
-%Another group of researchers conducted experiments using a spatial audio interface to describe the position of a target on the horizontal plane~\cite{marentakis2006effects}.
-%Here, participants pointed to where they thought the targets were, on their left or right, as they traversed a path.
-%Their results show a good relation between target difficulty and search time, providing a strong argument that Fitts's Law can be used to describe the performance of a spatial audio interface.
-%These results have since been supported by other authors, who found that Fitts's Law provided a good explanation for the results from an experiment using visual, limited visual and non-visual feedback cues~\cite{wu2010fitts}.
-%However, Fitts's Law has not yet been shown to apply to a spatial tone that uses varying pitch to convey the target's tilt angle, as demonstrated in this paper.}
+However, to our knowledge no extensive work or experiments have been done to determine how well users respond to tilt adjustment instructions using a tone with \emph{varying pitch}, in particular when using bone-conducting headphones, and how changes to this tone's behaviour affects performance. 
 
 \section{Portable Navigation System}\label{sec:portable-navigation}
 
@@ -212,7 +199,6 @@ However, to our knowledge no extensive work or experiments have been done to det
 
 Our ultimate goal is to deliver a navigation system that is capable of guiding a user with visual impairments on the last leg of their journey, e.g.\ to a specific aisle and shelf in a shop, using only a mobile phone.
 A large amount of data need to be translated from a visual form into a format that is useful to people with limited or no vision.
-%To do this, we will use a combination of different feedback modes to facilitate two-way communication between the user and the device.
 We therefore plan to use a combination of voice, audio and vibration cues to translate visual navigation data as effectively as possible and overcome the bandwidth limitation of the human ear. 
 
 \begin{anonsuppress}
@@ -226,7 +212,7 @@ We use a set of bone-conducting headphones (see \cref{fig:tango-headphone}) that
 In the future, we will use multiple feedback modes to provide the user with navigation and obstacle avoidance instructions.
 However, for this paper, we only considered the spatialised audio mode and its variation in pitch in order to determine its effectiveness in conveying a target's pan and tilt angles.
 
-\todo{Needed?}A diagram of the experimental system pipeline is shown in \cref{fig:pipeline}.
+A diagram of the experimental system pipeline is shown in \cref{fig:pipeline}.
 Here, the arrows indicate the direction of the flow of information.
 When the user taps the Tango's screen, a new virtual target is generated and its coordinates are sent to the audio generation module, along with the Tango's current position and orientation.
 The audio generator then produces a tone based on the difference between the Tango and the target's positions (in the Tango's global coordinate system) and sends it to the audio output channel, which plays it back to the user.
@@ -256,7 +242,6 @@ The difference between the target's angular position and the device's angular or
 The pan angle ($\phi$) describes the angle which the user needs to rotate the camera vector, $C$, around the $z$-axis shown in \cref{fig:cam-coords}, i.e.\ how far the target is to the left or right of the user.
 We use an HRTF to add a spatial element to the audio tone that is played to the user, placing the sound source at the target's location. 
 Humans determine a sound source's pan direction by subconsciously analysing the inter-aural time difference (IID) between a sound reaching both of your ears: the greater the IID, the greater the perceived angular distance to the sound source~\cite{wightman1992dominant}.
-%For example, if you hear a sound in your left ear first, you interpret the sound as coming from your left.
 
 We implement OpenAL's default HRTF, based on the MIT's KEMAR dataset\footnote{sound.media.mit.edu/resources/KEMAR.html}, to generate a sinusoidal sound wave based on the difference between the user and target's positions.
 The library takes position values as input and outputs a tone based on the angle between the two position vectors. 
@@ -296,81 +281,22 @@ With these limits, $f$ can be determined with \cref{eq:frequency}, where $m$ is 
 \section{Experiments}\label{sec:experiments}
 
 We performed a set of experiments with our audio interface to determine its effectiveness at directing a user to adjust a camera's $\phi$ and $\theta$ to point it to a target.
-%Furthermore, we also carried out a set of pre-screening experiments to determine each participant's hearing characteristics.
 The results from the experiments allow us to better understand how the users respond to different settings for the spatial audio feedback stimulus and use them to improve and optimise the behaviour of the feedback modes in our portable navigation aid.
 
 The participants were given time before the experiments to familiarise themselves with the device and the tones it emits, as well as what the $f_{512}$ `on-target' tone sounds like.
 We also tested the system with 3 legally blind participants and compared their data to the blindfolded dataset.
 These latter experiments in particular provided us with valuable subjective feedback that can be used to improve future iterations.
 
-\subsection{Experimental Procedure}
-
 For the experiments we used two groups of participants, with one ($G1$) including 42 sighted and blindfolded participants and the other ($G2$) 3 legally blind volunteers with varying degrees of vision impairment. 
 They performed a series of experiments using our system with a pair of `AfterShockz Sport3' bone-conducting headphones.
 The participants were recruited on a volunteer-basis and consisted of a diverse group of undergraduate students and professionals with ages ranging between 17 and 40 years ($\mu=22\pm3.5$ years, 13 male, 32 female) and did not not have significant hearing issues or any other disability that could affect the experiment.
 
-%The participants participated in three experiments.
-%The first two experiments were performed to determine each participant's hearing characteristics and provide some context to the results generated during the target-search experiment.
-%These characterisation experiments will also indicate pre-existing biases our participant-base might have in the modes or dimensions we performed our third experiment on: the target search. 
-
-%\begin{figure}
-  %\centering
-  %\begin{subfigure}[t]{0.45\textwidth}
-    %\centering
-    %\includegraphics[width=0.5\textwidth]{figures/sighted_participant.png}
-    %\caption{A sighted and blindfolded participant. }
-  %\end{subfigure}\hfill
-  %\begin{subfigure}[t]{0.45\textwidth}
-    %\centering
-    %\includegraphics[width=0.5\textwidth]{figures/vi_participant2.jpg}
-    %\caption{A visually impaired participant. }
-  %\end{subfigure}
-  %\caption{Participants in the study using the Tango device during the target-search task. }
-  %\label{fig:participants}
-%\end{figure}
-
 We are only evaluating the interface in the pan and tilt dimensions and the 3D targets are therefore generated at a constant distance of \SI{2}{\metre} from the participant.
 Throughout the experiments, various parameters of the targets and participants were recorded and streamed in real-time to a laptop computer via a WiFi connection.
-%Prior to the target search experiment, the blindfolded participant group was given a few minutes without a blindfold to familiarise themselves with the system and confirm the target's location with their own eyes.
-%This was done verbally with the participants with limited vision. 
-
-%\subsection{Participant Characterisation}
-
-%\subsubsection{Spatial Awareness}
-
-%In this experiment, we evaluated a participant's ability to determine the lateral direction a sound is coming from.
-%To do this, we played a continuous \SI{512}{\hertz} sinusoidal tone to the participant through the headphones and applied an HRTF to spatialise and place its source to the participant's left or right.
-%The participant then had to select the direction the sound came from.
-%The longer the experiment lasts and the more correct guesses the participant makes, the closer the source moves to the centre-front of the participant, making it increasingly difficult to localise. 
-
-%For this progressive increase in difficulty, a 2-up, 1-down step process is used~\cite{wetherill1965sequential,levitt1971transformed}, meaning that for every 2 correct answers, the distance to the centre halves, making the lateral direction harder to determine.
-%Conversely, the task becomes easier for each incorrect answer by doubling the sound source's distance from the centre.
-%We also use 2 different step sequences, one starting at a large distance (\SI{45}{\degree}) from the user and the other at the minimum distance (approximately \SI{1}{\degree}), giving an `easy' and a `hard' step respectively.
-%The terminating condition for the experiment is when the 2 step sequences converge to within 2 step ranges of one another for 3 consecutive guesses.
-%This gives a distance band within which the participant is capable of localising the sound source. Each participant performed this experiment three times. 
-
-%\subsubsection{Pitch Discrimination}
-
-%Here we determined a participant's ability to differentiate pitch, i.e.\ how well they can tell if a tone is high or low pitched.
-%We played 2 tones to the participants in succession with the second tone being higher or lower-pitched than the first.
-%The participants were then asked to select whether they interpreted the second tone as higher or lower-pitched than the first.
-
-%The first tone is randomly generated, while the second tone is generated by adding or subtracting some value from the first one.
-%The tone difference depends on how well the participant can tell the tones apart.
-%Like the spatial awareness experiment, a 2-up, 1-down step process is used: for every 2 consecutive correct answers, the pitch difference between the tones is halved, and the difference is doubled for every incorrect answer.
-%Two step sequences are again used here, one starting with a large pitch difference ($f_h=2^9=$ \SI{512}{\hertz}) between the tones and the other with a small difference ($f_l=2^1=$ \SI{2}{\hertz}).
-%The termination condition is when the two step sequences are within one octave of each other (i.e.\ $\log_2\frac{f_h}{f_l}=2^1$) for 3 consecutive answers.
-%Each participant performed this experiment twice. 
-
-%\subsection{Target Search}
-
-\subsection{Task Description}
-
-%The final experiment is the main one and will answer the question we are most interested in: how well does a spatial tone with varying pitch direct a user to look in a specific direction and how do the parameters of this tone affect the user's performance in this task? 
 
 For the experiment, the participants were blindfolded where necessary and given a Tango device running an app purpose-written for this experiment.
 When started, a set of virtual targets were presented one at a time to the participant on the device.
-Then, depending on the direction the participant was currently pointing the camera relative to the target's position, the Tango generated and played a tone via the bone-conducting headphones to indicate the pan and tilt angle adjustment required to point the camera to the target. %These instructions are spatialised tones with varying pitch: an HRTF indicates the pan direction (left or right) and the pitch indicates whether the participant should be looking up (high pitch) or down (low pitch) to find the target. 
+Then, depending on the direction the participant was currently pointing the camera relative to the target's position, the Tango generated and played a tone via the bone-conducting headphones to indicate the pan and tilt angle adjustment required to point the camera to the target. 
 
 Once the participant pointed the camera toward where they thought the target was located, they had to tap the screen to confirm the target's perceived location at which point a new target was presented and the search-process was repeated.
 28 targets were presented to each participant per run.
@@ -381,144 +307,33 @@ This was done to see whether, for example, a more rapid increase in pitch would 
 To minimise any speed/accuracy trade-off bias in the results, we asked the participants to search for the targets without placing particular emphasis on accuracy or time. 
 The order in which the settings were set for each participant was randomised in order to minimise any learning effect the participant population might display between each experiment. 
 
-\subsection{Metrics}
-
-We use two different metrics to compare the 3 different pitch gradient settings: the acquisition accuracy and search time.
+In this case, the system's measure of performance is given by the target acquisition accuracy.
 The accuracy is given as the difference between the device's orientation at the time the participant confirmed they were on target, and the target's actual angular position.
 We separate the results of the tilt and pan dimensions in order to determine how the different pitch settings affect pointing accuracy. 
 
-%\todo{Needed?}We also compare the performance of the 3 pitch gradient settings in terms of the time it takes each participant to find a target.
-%However, since each participant was presented with a different, randomly generated set of targets, a direct time comparison is not possible.
-%Instead, we use Fitts's Law~\cite{fitts1954information}, modified by MacKenzie for uncertain target sizes and noisy data~\cite{mackenzie1992fitts}, which states that there is a relation between the time it takes to find a target and its index of difficulty (the ratio between the distance to the target and its width).
-%It also provides a so-called `index of performance' that we can use as a metric to compare the results between the 3 configurations. 
+\section{Experiment Results and Discussion}\label{sec:results}
 
-%Here we briefly summarise the equations and quantities involved in our metric.
-%Fitts's Law is given by  
-
-%\begin{equation}
-  %\label{eq:fitts-base}
-  %t = a + bID,
-%\end{equation}
-
-%\noindent
-%where $t$ is the time it takes to find a target, $a$ and $b$ are constants determined through regression and $ID$ is a description of the difficulty of the target, given as logarithmic function of the ratio between the distance to the target and the target's width.
-%In our case, the targets have no width, since they are points in space, and we therefore use MacKenzie's modified form for $ID$, given by
-
-%\begin{equation}
-  %\label{eq:fitts-id}
-  %ID = \log_2\left(\frac{\theta}{w_e} + 1\right).
-%\end{equation}
-
-%\noindent
-%Here $\theta$ is the angular distance between subsequent target centres and $w_e$ is the targets' effective angular width~\cite{welford1968fundamentals}, given by
-
-%\begin{equation}
-  %\label{eq:fitts-we}
-  %w_e = \sqrt{2\pi e}\sigma = 4.133\sigma,
-%\end{equation}
-
-%\noindent
-%where $\sigma$ is the standard deviation of the error data, taken as the angle between the participant's target selection and target's actual angular position.
-%Fitts's index of performance, $IP$, can then be calculated using 
-
-%\begin{equation}
-  %\label{eq:fitts-performance}
-  %IP = \frac{ID}{t},
-%\end{equation}
-
-%\noindent
-%where $IP = \frac{1}{t}$ when $\sigma=0$.
-
-\section{Experiment Results and Discussion}
-\label{sec:results}
-
-%\subsection{Participant Characterisation}
-%\label{sec:character}
-
-%\cref{fig:location-guesses} shows the results for the spatial awareness experiment in the pan direction where the participants had to determine the location of the sound they were played. 
-
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=100 20 150 100, width=0.4\textwidth]{figures/location_guesses.png}
-  %\caption{Histograms of the spatial awareness experiment in the pan dimension showing the proportion of correct/incorrect guesses per bin interval. }
-  %\label{fig:location-guesses}
-%\end{figure}
-
-%With the relatively low number of erroneous guesses, we see that the participants were accurate in guessing the location of the sound source.
-%This is further supported by the large number of samples at the minimum difference of \textasciitilde\SI{3}{\cm}, indicating that the participants reached this level more frequently and consistently.
-%We can therefore conclude that the participants had little difficulty determining the pan angle of a sound source.
-%These results are in line with what we expected and they are supported by literature which indicates that humans are very adept at localising a sound source, and this ability was apparent for the HRTF-generated pan locations. 
-
-%The results recorded during the pitch discrimination experiment are shown in \cref{fig:tone-guesses}, where a bar plot is used to show the number of correct guesses for each tone difference level.
-%The latter is given in terms of the relative semitone difference between the tones which are obtained using the following relation: 
-
-%\begin{equation}
-%\label{eq:semitone-difference}
-  %\Delta f = 12\log_2\frac{f_0}{f_1}.
-%\end{equation}
-
-%From \cref{fig:tone-guesses}, we can see that the guesses are normally spread around a 0 semitone difference.
-%As expected, a larger proportion of incorrect guesses occur around the smaller differences with the majority of samples for correct and incorrect guesses being recorded in the $[-0.25, 0.25]$ semitone difference level.
-%Assuming these differences are normally distributed, we fitted a cumulative distribution function (CDF) over each participant's set of results for their correct guesses and used the CDF's parameters to determine the semitone difference threshold, where the participant could no longer reliably tell two tones apart, for each participant.
-%See \cref{fig:cdf-semitone} for an example showing the actual CDF of a participant and its approximated normal CDF\@.
-%We set this threshold at 75\% of the correct guesses, since this represents a significant majority of samples.
-%We found that the median threshold is approximately 0.43 semitones for the sighted participants in a range of [$9.2\times10^-4$, 3.12] semitones.
-%We use the median given the skewness of the distribution.
-%The plot showing the participants' threshold distribution can be seen in \cref{fig:tone-threshold}. 
-
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=80 0 150 100, width=0.4\textwidth]{figures/tone_guesses.png}
-  %\caption{Results of the tone limit experiment. }
-  %\label{fig:tone-guesses}
-%\end{figure}
-
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=120 0 120 70, width=0.4\textwidth]{figures/cdf_tone_guesses.png}
-  %\caption{Cumulative distribution of the number of correct guesses for one participant. }
-  %\label{fig:cdf-semitone}
-%\end{figure}
-
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=80 20 120 0, width=0.4\textwidth]{figures/tone_threshold.png}
-  %\caption{A distribution of the 75\% cut-off frequencies. }
-  %\label{fig:tone-threshold}
-%\end{figure}
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=80 20 120 0, width=0.4\textwidth]{figures/tone_medians.png}
-  %\caption{A distribution of the median cut-off frequency thresholds along with the median 75\% cut-off threshold. }
-  %\label{fig:tone-medians}
-%\end{figure}
-
-%\subsection{Target Search}
-
-\subsection{Panning Results}
+\subsection{Pan Results}
 
 The results from the target search experiment for the participants in $G1$ in the pan dimension are given on the abscissa of the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the angular errors in the pan and tilt directions are plotted against each other.
 A set of box-plots of the pan errors' median and standard deviations are also given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for each of the $m_l, m_m$ and $m_h$ setting. 
-The results are summarised in Table~\ref{tab:results}.
+The results are summarised in \cref{tab:results}.
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
-  %\includegraphics[width=1.0\columnwidth]{figures/err_lo.png}
   \caption{Angular error data for $G1$ and the $m_l$ setting. }\label{fig:err-results-lo}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
-  %\includegraphics[width=1.0\columnwidth]{figures/err_med.png}
   \caption{Angular error data for $G1$ and the $m_m$ setting. }\label{fig:err-results-med}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
-  %\includegraphics[width=1.0\columnwidth]{figures/err_hi.png}
   \caption{Angular error data for $G1$ and the $m_h$ setting. }\label{fig:err-results-hi}
 \end{figure}
 
@@ -557,30 +372,28 @@ For the data collected from $G1$, there is a strong linear correlation between t
 The 3 settings have similar average errors and standard deviations, with the $m_m$ setting again producing the marginally best results with the smallest average error and standard deviation.
 However, the differences are relatively small (approximately 6\%) and are not significant enough (Friedman test $p \gg 0.05$) to conclude that the pitch gradient has an effect on the target acquisition accuracy performance in the pan dimension. 
 
-%The data collected from $G2$ follow a similar trend to that of $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
-%These results are summarised in Table~\ref{tab:vi-results}.
-%Unfortunately, not enough samples could be collected to draw any final conclusions.
-%However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
-%In addition, they also confirm that a participant's target search capability in the pan dimension is robust to the changing pitch for the target's tilt angle which is a useful result in support of the effectiveness of our audio interface.
+The data collected from $G2$ follow a similar trend to that of $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
+These results are summarised in \cref{tab:vi-results}.
+Unfortunately, not enough samples could be collected to draw any final conclusions.
+However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
+In addition, they also confirm that a participant's target search capability in the pan dimension is robust to the changing pitch for the target's tilt angle which is a useful result in support of the effectiveness of our audio interface.
 
-%\begin{table}
-  %\centering
-  %\caption{A table summarising the target search results of the participants in $G2$ (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}\label{tab:vi-results}
-  %\begin{tabular}{llcccccc}
-    %\toprule
-    %\multicolumn{2}{c}{} & \multicolumn{2}{c}{$m_l$} & \multicolumn{2}{c}{$m_m$} & \multicolumn{2}{c}{$m_h$} \\
-    %\multicolumn{2}{c}{} & $\mu_l$ & $\sigma_l$ & $\mu_m$ & $\sigma_m$ & $\mu_h$ & $\sigma_h$ \\\midrule
-         %& P1 &  0.25 & 0.44 &  0.21 & 0.45 &  0.29 & 0.40 \\% \cline{2-8}
-    %Pan  & P2 &  0.18 & 0.85 &  0.05 & 0.49 & -0.08 & 0.32 \\% \cline{2-8}
-         %& P3 & -0.10 & 0.67 & -0.08 & 0.61 & -0.08 & 0.50 \\ \midrule
-         %& P1 & -0.17 & 0.21 & -0.10 & 0.2  & -0.25 & 0.21 \\% \cline{2-8}
-    %Tilt & P2 & -0.87 & 0.26 & -0.05 & 0.21 & -0.15 & 0.18 \\% \cline{2-8}
-         %& P3 & -0.57 & 0.31 & -0.57 & 0.45 & -0.38 & 0.39 \\% \hline
-    %\bottomrule
-  %\end{tabular}
-%\end{table}
-
-%Based on previous research~\cite{zwiers2001spatial}, these results were somewhat expected.
+\begin{table}
+  \centering
+  \caption{A table summarising the target search results of the participants in $G2$ (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}\label{tab:vi-results}
+  \begin{tabular}{llcccccc}
+    \toprule
+    \multicolumn{2}{c}{} & \multicolumn{2}{c}{$m_l$} & \multicolumn{2}{c}{$m_m$} & \multicolumn{2}{c}{$m_h$} \\
+    \multicolumn{2}{c}{} & $\mu_l$ & $\sigma_l$ & $\mu_m$ & $\sigma_m$ & $\mu_h$ & $\sigma_h$ \\\midrule
+	 & P1 &  0.25 & 0.44 &  0.21 & 0.45 &  0.29 & 0.40 \\% \cline{2-8}
+    Pan  & P2 &  0.18 & 0.85 &  0.05 & 0.49 & -0.08 & 0.32 \\% \cline{2-8}
+	 & P3 & -0.10 & 0.67 & -0.08 & 0.61 & -0.08 & 0.50 \\ \midrule
+	 & P1 & -0.17 & 0.21 & -0.10 & 0.2  & -0.25 & 0.21 \\% \cline{2-8}
+    Tilt & P2 & -0.87 & 0.26 & -0.05 & 0.21 & -0.15 & 0.18 \\% \cline{2-8}
+	 & P3 & -0.57 & 0.31 & -0.57 & 0.45 & -0.38 & 0.39 \\% \hline
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Tilt Results}\label{sec:tilt-results}
 
@@ -601,87 +414,35 @@ We use the median values here since the data are not normally spread and there i
 The Friedman test indicates a statistically significant difference between the 3 settings ($p < 0.01$).
 A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.04}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different than the $m_l$ setting ($p=0.0014$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42$).
 This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns.
-%This is supported by the earlier observations made on the average and standard deviations of the error data which indicate that the $m_l$ setting gives the highest average errors, while $m_m$ and $m_h$ produce similar error levels. 
 
 From \cref{fig:err-boxplot-median} it can also be seen that the data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
 From the results, it is not completely clear what causes this negative bias in the pitch dimension.
 However, a possible explanation is that the floor introduces a position constraint within the participants' minds, since the target cannot appear below the ground.
 It can potentially appear above the participants' head though, giving variable upper an lower limits that depend on the participants' height and individual perception.
 Future improvements to our audio interface should consider a non-linear increase in pitch as a function of tilt angle instead of the linear one we used in this work to remedy this bias.
-%\cref{fig:tone-threshold} shows the distribution of the cut-off frequency thresholds that were found in Section~\ref{sec:character}, as well as a plot of the median values of the errors in the tilt dimension, transformed to a frequency using each dataset's respective pitch-gain gradient. 
-
-%In particular, \cref{fig:tone-medians} indicates that the participants, on average, searched for the target until they could no longer detect a difference between the tone they were played and the \SI{512}{\hertz} on-target tone they were searching for.
-%This is shown by the vast majority of the error data being located below the 75\% cut-off threshold frequency of \SI{12.9}{\hertz} (0.43 semitones around \SI{512}{\hertz}).
-%Furthermore, it can be seen that the \emph{hi} dataset comes the closest to the cut-off frequency.
-%This could explain why it produces the strongest correlation between the targets' true perceived position, since the \emph{hi} pitch gradient is the most sensitive to changes in the tilt angle, it allowed the participants to get closer to the true tilt by playing a more easily distinguishable tone.
-
-%Given the small sample size in $G2$, there is limited meaningful statistical analysis we can do on the data collected from the participants with visual impairments.
-%However, it could be seen from the results in \cref{tab:vi-results} that these participants displayed the same behaviour in our experiments with a clear bias toward the lower angles (i.e.\ the floor) and not-insignificant variability between the 3 settings.
-%The participants also confirmed that they preferred the increased response rate of the \emph{hi} setting, reporting that it gave them a clearer idea of the direction they needed to point to. 
 
 The results collected from $G1$ and $G2$ show that a varying pitch tone can convey the tilt angle of a target to a human using bone-conducting headphones with accuracy levels similar to that in literature~\cite{bujacz2011sonification, katz2011spatial, zotkin2004rendering}.
 They also highlight a clear and significant difference between the 3 different pitch gain gradients, with the $m_l$ setting giving the lowest acquisition accuracy, while $m_m$ and $m_h$ give similar accuracy levels closest to the true tilt. 
 
-%\subsection{Time to Target}
+\subsection{Participant with Visual Impairments' Feedback}
 
-%\crefrange{fig:fitts-lo}{fig:fitts-hi} shows the box-plots of the target-search time as a function of the \emph{ID} of the targets.
-%Here, the bin interval is the smallest effective width, calculated from \cref{eq:fitts-performance}, between the 3 gradient settings.
-%We used the relation from \cref{eq:fitts-base} and fitted a logarithmic regression line for each participant.
-%The medians of the $a$ and $b$ parameters, from \cref{eq:fitts-base}, for all the subjects' regressions were used to plot the resulting lines of best fit, shown in \crefrange{fig:fitts-lo}{fig:fitts-hi}. 
+After and during the experiments involving the participants with visual impairments, we had the opportunity to collect their feedback on the current system implementation and suggestions for future improvements.
 
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=120 20 120 20, width=0.4\textwidth]{figures/fitts_lo.png}
-  %\caption{\emph{Lo} setting. }\label{fig:fitts-lo}
-%\end{figure}
+In general, they were satisfied with the current implementation and had little difficulty using it.
+Furthermore, the prohibitive cost, complexity and cumbersomeness of other existing systems discouraged our subjects from purchasing and using them, so they were quite enthusiastic about our goal of developing a mobile or tablet-based indoor navigation system. 
 
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=120 20 120 20, width=0.4\textwidth]{figures/fitts_med.png}
-  %\caption{\emph{Med} setting. }\label{fig:fitts-med}
-%\end{figure}
+One aspect of the audio interface that requires improvement is the tone used during the experiments was not very pleasant and led to auditory fatigue after a long period of use.
+We are aware of this issue and we are already investigating more natural, `pleasant' and rich sounds to replace the basic sinusoidal wave that was used in the experiments.
+One possibility is to use musical instruments (e.g.\ MIDI sound files) to play notes and scales~\cite{brewster1998using}.
 
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=120 20 120 20, width=0.4\textwidth]{figures/fitts_hi.png}
-  %\caption{\emph{Hi} setting. }\label{fig:fitts-hi}
-%\end{figure}
+Concerning the bone-conducting headsets, only one participant had reservations about this choice, citing cost concerns.
+None of the participants had any technical issues in using the headset or misunderstanding audio cues.
+They all agreed that this is a valid choice to avoid cutting a person with visual impairments off from environmental sounds.
+Furthermore, they suggested to add some voice component to the system to inform the user of important events (e.g. \emph{`Target has been found'}, \emph{`You are veering off course'}, etc.) or to simply confirm and reassure the user that they are still on course.
 
-%\begin{figure}
-  %\centering
-  %\includegraphics[clip, trim=90 20 130 20, width=0.4\textwidth]{figures/fitts_performance.png}
-  %\caption{Boxplots of the indices of performance.}\label{fig:fitts-performance}
-%\end{figure}
-
-%From these figures we can see that the data are consistent with Fitts's Law where the logarithmic line of best fit very closely approximates the median values of the binned data for all 3 pitch gradient settings, with each settings giving Pearson scores of 0.95, 0.87 and 0.93 for the \emph{lo}, \emph{med} and \emph{hi} settings respectively ($p < 0.05$ for all settings). 
-%This result enabled us to compute the index of performance, $IP$, given by Equation~\ref{eq:fitts-performance}, for all of the subjects.
-%These results were used to plot \cref{fig:fitts-performance}, which shows that the \emph{lo} and \emph{med} configurations give similar results, but slightly different spreads, while the \emph{hi} gives a lower $IP$.
-%The Friedman score for the 3 settings gives a $p$-value of 0.017, comfortably achieving statistical significance with a threshold of $\alpha=0.05$.
-%The Wilcoxon test comparing the \emph{lo} and \emph{hi} settings achieves significance after applying a Bonferroni correction ($\alpha=0.016$), but the other comparisons do not achieve significance. 
-
-%A possible explanation for the observed behaviour is that the more distinguishable changes in the audio pitch with the \emph{hi} configuration better informs the user when they are on target, leading to a more accurate estimate, but also increases the time it takes to point in the right direction.
-%Conversely, the \emph{lo} and \emph{med} gradients make it more difficult for the user to know when they are on target, leading to a shorter search time, but at the cost of lower accuracy.
-%This is confirmed by the results obtained in Section~\ref{sec:tilt-results} and the Wilcoxon test results. 
-
-%The results collected from the participants with partial eyesight follow the same trends observed in the blindfolded participants, giving $IPs$ of 0.58, 1.3 and 0.35 for the \emph{lo}, \emph{med} and \emph{hi} gradient settings respectively.  
-
-%\subsection{Participant with Visual Impairments' Feedback}
-
-%After and during the experiments involving the participants with visual impairments, we had the opportunity to collect their feedback on the current system implementation and suggestions for future improvements.
-
-%In general, they were satisfied with the current implementation and had little difficulty using it.
-%Furthermore, the prohibitive cost, complexity and cumbersomeness of other existing systems discouraged our subjects from purchasing and using them, so they were quite enthusiastic about our goal of developing a mobile or tablet-based indoor navigation system. 
-
-%One aspect of the audio interface that requires improvement is the tone used during the experiments was not very pleasant and led to auditory fatigue after a long period of use.
-%We are aware of this issue and we are already investigating more natural, `pleasant' and rich sounds to replace the basic sinusoidal wave that was used in the experiments.
-%One possibility is to use musical instruments (e.g.\ MIDI sound files) to play notes and scales~\cite{brewster1998using}.
-
-%Concerning the bone-conducting headsets, only one participant had reservations about this choice, citing cost concerns.
-%None of the participants had any technical issues in using the headset or misunderstanding audio cues.
-%They all agreed that this is a valid choice to avoid cutting a person with visual impairments off from environmental sounds.
-%Furthermore, they suggested to add some voice component to the system to inform the user of important events (e.g. \emph{`Target has been found'}, \emph{`You are veering off course'}, etc.) or to simply confirm and reassure the user that they are still on course.
-
-%The final major suggestion was to add some form of on-target confirmation, either voice, vibration or some other audio cue. For the purposes of this experiment, we purposefully opted to not inform the participant when they were on target, since we are interested in the target acquisition accuracy. However, going forward we intend on adding an on-target notification in the form of an additional tone overlaid over the main tone. 
+The final major suggestion was to add some form of on-target confirmation, either voice, vibration or some other audio cue.
+For the purposes of this experiment, we purposefully opted to not inform the participant when they were on target, since we are interested in the target acquisition accuracy.
+However, going forward we intend on adding an on-target notification in the form of an additional tone overlaid over the main tone. 
 
 \section{Conclusion and Future Work}\label{sec:conclusion}
 
@@ -691,8 +452,8 @@ We found that a spatial audio tone with a varying pitch can be used to convey th
 The angular errors made by the participants are in line with those found in previous studies using similar audio interfaces.
 We also found that varying the pitch-gain gradient of our interface influences the accuracy of the system in the tilt dimension, as well as the time to target, without affecting the performance in the pan dimension.
 The steeper, $m_h$ and $m_m$ pitch-gains were found to produce the best results in this respect.
-Furthermore, we discovered a logarithmic relationship between the index of difficulty of a target and the time taken by a participant to find it, confirming that the results with our interface adhere to Fitts's Law.
-However, there is a compromise to be made between speed and accuracy, with the $m_h$ pitch-gain gradient directing the user to the target in the longest time. 
+%Furthermore, we discovered a logarithmic relationship between the index of difficulty of a target and the time taken by a participant to find it, confirming that the results with our interface adhere to Fitts's Law.
+%However, there is a compromise to be made between speed and accuracy, with the $m_h$ pitch-gain gradient directing the user to the target in the longest time. 
 
 Feedback from the participants with visual impairments was mostly positive and they agreed with the choice of bone-conduction headphones that do not inhibit normal hearing.
 However, they noted that the sine wave audio signal induced some audio fatigue, something noted by the other participants as well, and suggested suggested that more full-bodied, natural sounds be used instead.
