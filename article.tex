@@ -156,7 +156,7 @@ The main contributions of this paper are two-fold:
 \end{itemize}
 
 The remainder of this paper is organised as follows: \cref{sec:lit-review} gives an overview of existing navigation systems and audio interfaces for people living with visual impairments.
-\cref{sec:portable-navigation} discusses the navigation device's hardware and interface setup and describes how $\phi$ and $\theta$ are conveyed to the user.
+\cref{sec:portable-navigation} discusses the navigation device's hardware and interface setup and describes how the target's position is conveyed to the user.
 The experiments that were conducted are explained in \cref{sec:experiments} and the results are presented and discussed in \cref{sec:results}. 
 Finally, \cref{sec:conclusion} concludes this paper with a summary of the findings and comments on our future work. 
 
@@ -268,13 +268,13 @@ This high/low association scheme is chosen because humans naturally associate hi
 We use a logarithmic, octave-based gain function for the pitch, since an increase in octave provides a distinct perceptible change while keeping the timbre roughly constant~\cite{shepard1964circularity}.
 
 We wish to determine how the gradient of the pitch gain as a function of $\theta$ (i.e.\ $m = \frac{df}{d\theta}$) affects a user's performance, e.g.\ does steeper $\frac{df}{d\theta}$ lead to an increased target acquisition rate?
-For this we select three different pitch settings, referred to henceforth as $m_l$, $m_m$ and $m_h$ for the smallest, middle and highest gain gradients respectively. 
+For this we select 3 different pitch settings, referred to henceforth as $m_l$, $m_m$ and $m_h$ for the smallest, middle and highest gain gradients respectively. 
 To find these gradients, we set the maximum and minimum limits for $\theta$ and the maximum and minimum frequencies for $f$ for each respective setting.
 Furthermore, for the sake of consistency and between the different settings, each gradient generates the same pitch when $C$ is level with the target's tilt. 
 
 After practical tests with the device and headphones, we set the neutral, on-target tone to $f_{512} =$ \SI{512}{\hertz} for its audibility.
-For $m_l$, we set $f_{max}$ and $f_{min}$ to one octave higher and lower than $f_{512}$, giving limits of \SI{1024}{\hertz} and \SI{256}{\hertz} respectively.
-For $m_m$, the $f_{max}$ and $f_{min}$ are set to two octaves higher and lower than $f_{512}$ (\SI{2048}{\hertz} and \SI{128}{\hertz}) and $m_h$ to three octaves higher and lower (\SI{4096}{\hertz} and \SI{64}{\hertz}).
+For $m_l$, we set $f_{max}$ and $f_{min}$ to 1 octave higher and lower than $f_{512}$, giving limits of \SI{1024}{\hertz} and \SI{256}{\hertz} respectively.
+For $m_m$, the $f_{max}$ and $f_{min}$ are set to 2 octaves higher and lower than $f_{512}$ (\SI{2048}{\hertz} and \SI{128}{\hertz}) and $m_h$ to 3 octaves higher and lower (\SI{4096}{\hertz} and \SI{64}{\hertz}).
 We selected these limits for practical reasons, given the fact that the bone conducting headphones we use have low volume gain at very high and low frequencies, making it difficult to hear. 
 The values of $m_l, m_m, m_h$ are visualised in \cref{fig:pitch-gain}.
 
@@ -286,7 +286,11 @@ The values of $m_l, m_m, m_h$ are visualised in \cref{fig:pitch-gain}.
 
 We set the range of angles the system can convey to $[-\frac{\pi}{2}; \frac{\pi}{2}]$; anything outside this range implies that the target is behind the user and was not considered in this series of experiments. 
 The \SI{0}{\radian} position is directly in front of the user.
-With these limits, $f$ can be determined with $f(\theta) = 2^{-m\theta + c}$, where $m$ is the given gradient setting and $c$ can be found using the current setting's pitch and angle limits.
+With these limits, $f$ can be determined with \cref{eq:frequency}, where $m$ is the given setting's gradient, $\frac{df}{d\theta}$, and $c$ can be found using the current setting's pitch and angle limits.
+
+\begin{equation}\label{eq:frequency}
+  f(\theta) = 2^{-m\theta + c}
+\end{equation}
 
 \section{Experiments}\label{sec:experiments}
 
@@ -361,34 +365,31 @@ Throughout the experiments, various parameters of the targets and participants w
 
 \subsection{Task Description}
 
-The final experiment is the main one and will answer the question we are most interested in: how well does a spatial tone with varying pitch direct a user to look in a specific direction and how do the parameters of this tone affect the user's performance in this task? 
+%The final experiment is the main one and will answer the question we are most interested in: how well does a spatial tone with varying pitch direct a user to look in a specific direction and how do the parameters of this tone affect the user's performance in this task? 
 
-For this experiment, the participants were blindfolded where necessary and given a Tango device running an app purpose-written for this experiment.
-When started, a set of virtual targets were presented one at a time to the participant on the Tango device.
+For the experiment, the participants were blindfolded where necessary and given a Tango device running an app purpose-written for this experiment.
+When started, a set of virtual targets were presented one at a time to the participant on the device.
 Then, depending on the direction the participant was currently pointing the camera relative to the target's position, the Tango generated and played a tone via the bone-conducting headphones to indicate the pan and tilt angle adjustment required to point the camera to the target. %These instructions are spatialised tones with varying pitch: an HRTF indicates the pan direction (left or right) and the pitch indicates whether the participant should be looking up (high pitch) or down (low pitch) to find the target. 
 
-Once the participant pointed the camera toward the target, the system generated a neutral tone with a pitch of \SI{512}{\hertz}, which we used as the `on-target' pitch for all of our experiments.
-The participants then had to manually confirm the direction they believe the target was after hearing the on-target tone and tap the screen.
-At this point a new search target was presented and the search-process was repeated.
-To minimise any speed/accuracy trade-off bias in the results, we asked the participants to search for the targets without placing particular emphasis on accuracy or time. 
-
+Once the participant pointed the camera toward where they thought the target was located, they had to tap the screen to confirm the target's perceived location at which point a new target was presented and the search-process was repeated.
 28 targets were presented to each participant per run.
 The positions of these targets were randomly generated and equally spread across the 4 quadrants on the vertical plane to prevent a clustering of targets at the same location.
-After every run of the experiment, the parameters controlling the tone's behaviour was adjusted.
-In this case, the rate of change of the tone's pitch was adjusted to make the pitch increase at a lower or higher rate as a function of the tilt angle between the target and the participant's current pointing direction.
+After every experiment run, the gradient ($m$ in \cref{eq:frequency}) was adjusted to make the pitch increase at a lower or higher rate.
 This was done to see whether, for example, a more rapid increase in pitch would help the participant find the target faster or more accurately.
+
+To minimise any speed/accuracy trade-off bias in the results, we asked the participants to search for the targets without placing particular emphasis on accuracy or time. 
 The order in which the settings were set for each participant was randomised in order to minimise any learning effect the participant population might display between each experiment. 
 
 \subsection{Metrics}
 
-We use two different metrics to compare the three different pitch gradient settings: the acquisition accuracy and search time.
-The accuracy is given as the difference between the Tango's orientation at the time the participant confirmed they were on target, and the target's actual orientation.
-We separate the results of the tilt and pan dimensions in order to see how the different pitch gradients affect a participant's pointing accuracy. 
+We use two different metrics to compare the 3 different pitch gradient settings: the acquisition accuracy and search time.
+The accuracy is given as the difference between the device's orientation at the time the participant confirmed they were on target, and the target's actual angular position.
+We separate the results of the tilt and pan dimensions in order to determine how the different pitch settings affect pointing accuracy. 
 
-We also compare the performance of the three pitch gradient settings in terms of the time it takes each participant to find a target.
+\todo{Needed?}We also compare the performance of the 3 pitch gradient settings in terms of the time it takes each participant to find a target.
 However, since each participant was presented with a different, randomly generated set of targets, a direct time comparison is not possible.
 Instead, we use Fitts's Law~\cite{fitts1954information}, modified by MacKenzie for uncertain target sizes and noisy data~\cite{mackenzie1992fitts}, which states that there is a relation between the time it takes to find a target and its index of difficulty (the ratio between the distance to the target and its width).
-It also provides a so-called `index of performance' that we can use as a metric to compare the results between the three configurations. 
+It also provides a so-called `index of performance' that we can use as a metric to compare the results between the 3 configurations. 
 
 Here we briefly summarise the equations and quantities involved in our metric.
 Fitts's Law is given by  
@@ -495,55 +496,55 @@ where $IP = \frac{1}{t}$ when $\sigma=0$.
 
 \subsection{Panning Results}
 
-The results from the target search experiment in the pan dimension are given on the abscissa of the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the angular errors in the pan and tilt directions are plotted against each other.
-A set of box-plots of the pan errors' median and standard deviations are also given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for each of the \emph{lo}, \emph{med} and \emph{hi} configurations.
+The results from the target search experiment for the participants in $G1$ in the pan dimension are given on the abscissa of the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the angular errors in the pan and tilt directions are plotted against each other.
+A set of box-plots of the pan errors' median and standard deviations are also given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for each of the $m_l, m_m$ and $m_h$ setting. 
 The results are summarised in Table~\ref{tab:results}.
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
   %\includegraphics[width=1.0\columnwidth]{figures/err_lo.png}
-  \caption{\emph{Lo} setting. }\label{fig:err-results-lo}
+  \caption{Angular error data for $G1$ and the $m_l$ setting. }\label{fig:err-results-lo}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
   %\includegraphics[width=1.0\columnwidth]{figures/err_med.png}
-  \caption{\emph{Med} setting. }\label{fig:err-results-med}
+  \caption{Angular error data for $G1$ and the $m_m$ setting. }\label{fig:err-results-med}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
   %\includegraphics[width=1.0\columnwidth]{figures/err_hi.png}
-  \caption{\emph{Hi} setting. }\label{fig:err-results-hi}
+  \caption{Angular error data for $G1$ and the $m_h$ setting. }\label{fig:err-results-hi}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=20 -70 100 100, width=0.8\columnwidth]{figures/err_boxplot_medians.png}
-  \caption{Error median.}\label{fig:err-boxplot-median}
+  \caption{Error medians for $G1$.}\label{fig:err-boxplot-median}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=80 -70 100 0, width=0.8\columnwidth]{figures/err_boxplot_std.png}
-  \caption{Error standard deviations.}\label{fig:err-boxplot-std}
+  \caption{Error standard deviations for $G1$.}\label{fig:err-boxplot-std}
 \end{figure}
 
 \begin{table}
   \centering
-  \caption{A table of the pan and tilt angular error results for the target search experiment. The results include the absolute average error ($\mu_{abs}$), average error ($\mu$) and standard deviations ($\sigma$) given in radians, as well as the Spearman ($R$) correlation scores.}\label{tab:results}
+  \caption{A table of the pan and tilt angular error results collected from $G1$. The results include the absolute average error ($\mu_{abs}$), average error ($\mu$) and standard deviations ($\sigma$) given in radians, as well as the Spearman ($R$) correlation scores.}\label{tab:results}
   \begin{tabular}{llcccc}
     \toprule
     \multicolumn{2}{c}{} & $\mu_{abs}$ & $\mu$ & $\sigma$ & $R$ \\\midrule
-    & \emph{lo}  & 0.23 & -0.02 & 0.32 & 0.75 \\%\cmidrule{2-6}
-    Pan & \emph{med} & 0.21 & -0.01 & 0.28 & 0.77 \\%\cmidrule{2-6}
-    & \emph{hi}  & 0.22 & -0.05 & 0.31 & 0.75 \\\midrule
-    & \emph{lo}  & 0.40 & -0.14 & 0.46 & 0.38 \\%\cmidrule{2-6}
-    Tilt & \emph{med} & 0.32 & -0.12 & 0.36 & 0.48 \\%\cmidrule{2-6}
-    & \emph{hi}  & 0.34 & -0.16 & 0.39 & 0.55 \\
+         & $m_l$ & 0.23 & -0.02 & 0.32 & 0.75 \\%\cmidrule{2-6}
+    Pan  & $m_m$ & 0.21 & -0.01 & 0.28 & 0.77 \\%\cmidrule{2-6}
+         & $m_h$ & 0.22 & -0.05 & 0.31 & 0.75 \\\midrule
+         & $m_l$ & 0.40 & -0.14 & 0.46 & 0.38 \\%\cmidrule{2-6}
+    Tilt & $m_m$ & 0.32 & -0.12 & 0.36 & 0.48 \\%\cmidrule{2-6}
+         & $m_h$ & 0.34 & -0.16 & 0.39 & 0.55 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -551,21 +552,22 @@ The results are summarised in Table~\ref{tab:results}.
 \crefrange{fig:err-results-lo}{fig:err-results-hi} and the median and mean points from the box-plots in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} show that the data in the pan dimension is approximately normally distributed around zero.
 However, $p$-scores below the critical 0.05 level from the Shapiro-Wilkes test and inspection of the quantile-quantile (Q-Q) plots do not give enough confidence to consider the data as normally distributed and we therefore analyse the data through non-parametric techniques. 
 
-There is a strong linear correlation between the participants' guesses and the targets' true pan angles, shown by the high Spearman correlation scores of approximately 0.75 ($p \ll 0.05$) for all of the datasets, with the \emph{med} configuration displaying the marginally best result of 0.77.
-The three settings have similar average errors and standard deviations, with the \emph{med} configuration again producing the marginally best results with the smallest average error and standard deviation.
-However, the differences are small (approximately 6\%) and are not significant enough (Friedman test $p \gg 0.05$) to conclude that the pitch gradient has an effect on the performance in the pan dimension. 
+For the data collected from $G1$, there is a strong linear correlation between the participants' guesses and the targets' true pan angles, shown by the high Spearman correlation scores of approximately 0.75 ($p < 0.01$) for all of the datasets, with the $m_m$ setting displaying the marginally best result of 0.77.
+The 3 settings have similar average errors and standard deviations, with the $m_m$ setting again producing the marginally best results with the smallest average error and standard deviation.
+However, the differences are relatively small (approximately 6\%) and are not significant enough (Friedman test $p \gg 0.05$) to conclude that the pitch gradient has an effect on the target acquisition accuracy performance in the pan dimension. 
 
-The data collected from the participants with partial eyesight follow a similar trend to that of the blindfolded participants: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all three settings.
+The data collected from $G2$ follow a similar trend to that of $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
 These results are summarised in Table~\ref{tab:vi-results}.
 Unfortunately, not enough samples could be collected to draw any final conclusions.
 However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
+In addition, they also confirm that a participant's target search capability in the pan dimension is robust to the changing pitch for the target's tilt angle which is a useful result in support of the effectiveness of our audio interface.
 
 \begin{table}
   \centering
-  \caption{A table summarising the target search results of the participants with partial eyesight (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}\label{tab:vi-results}
+  \caption{A table summarising the target search results of the participants in $G2$ (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}\label{tab:vi-results}
   \begin{tabular}{llcccccc}
     \toprule
-    \multicolumn{2}{c}{} & \multicolumn{2}{c}{\emph{lo}} & \multicolumn{2}{c}{\emph{med}} & \multicolumn{2}{c}{\emph{hi}} \\
+    \multicolumn{2}{c}{} & \multicolumn{2}{c}{$m_l$} & \multicolumn{2}{c}{$m_m$} & \multicolumn{2}{c}{$m_h$} \\
     \multicolumn{2}{c}{} & $\mu_l$ & $\sigma_l$ & $\mu_m$ & $\sigma_m$ & $\mu_h$ & $\sigma_h$ \\\midrule
          & P1 &  0.25 & 0.44 &  0.21 & 0.45 &  0.29 & 0.40 \\% \cline{2-8}
     Pan  & P2 &  0.18 & 0.85 &  0.05 & 0.49 & -0.08 & 0.32 \\% \cline{2-8}
@@ -577,28 +579,28 @@ However, these results are in line with results from previous work~\cite{zwiers2
   \end{tabular}
 \end{table}
 
-Based on previous research~\cite{zwiers2001spatial}, these results were somewhat expected.
-In addition, they also confirm that a participant's target search capability in the pan dimension is robust to the changing pitch for the target's tilt angle which is a useful result in support of the effectiveness of our audio interface.
+%Based on previous research~\cite{zwiers2001spatial}, these results were somewhat expected.
 
 \subsection{Tilt Results}\label{sec:tilt-results}
 
-Besides the pan, the ordinates in \crefrange{fig:err-results-lo}{fig:err-results-hi} also show the results recorded during the target search experiment for the tilt direction.
-A set of box-plots are given in \cref{fig:err-boxplot-median} to show the average tilt error between the participants' guesses and the targets' true positions.
-All of the results are summarised in Table~\ref{tab:results}. 
+The ordinates in \crefrange{fig:err-results-lo}{fig:err-results-hi} also show the results recorded during the experiment with $G1$ in the tilt direction.
+A set of box-plots are given in \cref{fig:err-boxplot-median} to show the average tilt error between the participants in $G1$'s guesses and the targets' true positions.
+All of the results are summarised in \cref{tab:results}. 
 The data here are also considered not normally distributed following inspections of the Q-Q plots and Shapiro-Wilkes test results and are analysed accordingly.
 
-We found that there is reasonably significant correlation between the participants' guesses and the actual locations of the targets, shown by moderate Spearman correlation scores of approximately 0.38 for \emph{lo}, 0.48 for \emph{med} and the \emph{hi} gradient giving the strongest R-scores of the three with a score of 0.55 ($p \ll 0.05$ for all 3 settings).
+We found that there is reasonably significant correlation between the participants' guesses and the actual locations of the targets, shown by moderate Spearman correlation scores of approximately 0.38 for \emph{lo}, 0.48 for \emph{med} and the \emph{hi} gradient giving the strongest R-scores of the 3 with a score of 0.55 ($p < 0.01$ for all 3 settings).
 This indicates that the varying pitch is working as expected and the participants are generally interpreting the cues correctly. 
 
-The average errors of the datasets are relatively close to one another, with the \emph{lo} gradient giving the largest absolute error and standard deviation at \SI{0.40}{\radian} and \SI{0.46}{\radian}.
-The \emph{med} and \emph{hi} have similar absolute errors of \SI{0.32}{\radian} and \SI{0.34}{\radian} respectively.
-This is in line with the correlation scores, with the \emph{lo} gradient giving a worse result than the \emph{med} and \emph{hi} gradients and the \emph{hi} gradient giving the best results overall, with its high correlation score and relatively low absolute angular errors and standard deviation. 
+The average errors of the datasets are relatively close to one another, with the $m_l$ setting producing the largest absolute error and standard deviation at \SI{0.40}{\radian} and \SI{0.46}{\radian}.
+The $m_m$ and $m_h$ settings have similar absolute errors of \SI{0.32}{\radian} and \SI{0.34}{\radian} respectively.
+This is in line with the correlation scores, with $m_l$ giving a worst result and $m_h$ giving the best results overall, with highest correlation score and relatively low absolute angular errors and standard deviation, marginally beating $m_m$. 
 
-We use the Friedman test~\cite{friedman1937use} on the medians of the data to find the statistical significance of the differences between the datasets.
+We use the Friedman test on the medians of the data to better understand the difference differences between the datasets.
 We use the median values here since the data are not normally spread and there is significant noise within the data which may contaminate the mean values.
-This results in a $p$-value of 0.002, which falls below the commonly-used critical threshold of 0.05, implying that there is a statistically significant difference between the three settings.
-A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016$) shows that both the \emph{med} and \emph{hi} settings are significantly different than the \emph{lo} setting ($p=0.0014$ for both settings), but that the \emph{med} and \emph{hi} settings do not produce significantly different results from one another ($p=0.42$).
-This is supported by the earlier observations made on the average and standard deviations of the error data which indicate that the \emph{lo} setting gives the highest average errors, while the \emph{med} and \emph{hi} settings produce similar error levels. 
+The Friedman test indicates a statistically significant difference between the 3 settings ($p < 0.01$).
+A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.04}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different than the $m_l$ setting ($p=0.0014$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42$).
+This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns.
+%This is supported by the earlier observations made on the average and standard deviations of the error data which indicate that the $m_l$ setting gives the highest average errors, while $m_m$ and $m_h$ produce similar error levels. 
 
 From \cref{fig:err-boxplot-median} it can also be seen that the data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
 From the results, it is not completely clear what causes this negative bias in the pitch dimension.
@@ -612,19 +614,20 @@ Future improvements to our audio interface should consider a non-linear increase
 %Furthermore, it can be seen that the \emph{hi} dataset comes the closest to the cut-off frequency.
 %This could explain why it produces the strongest correlation between the targets' true perceived position, since the \emph{hi} pitch gradient is the most sensitive to changes in the tilt angle, it allowed the participants to get closer to the true tilt by playing a more easily distinguishable tone.
 
-Given the small sample size, there is limited meaningful statistical analysis we can do on the data collected from the participants with visual impairments.
-However, it could be seen from the results in Table~\ref{tab:vi-results} that these participants displayed the same behaviour in our experiments, with a clear bias toward the lower angles (i.e.\ the floor) and not-insignificant variability between the three settings in the tilt dimension.
-Similarly, the pan dimension remains more stable throughout the three settings.
-The participants also confirmed that they preferred the \emph{hi} setting, since it was more responsive and gave them a clearer idea of the direction they needed to point to. 
+Given the small sample size in $G2$, there is limited meaningful statistical analysis we can do on the data collected from the participants with visual impairments.
+However, it could be seen from the results in \cref{tab:vi-results} that these participants displayed the same behaviour in our experiments with a clear bias toward the lower angles (i.e.\ the floor) and not-insignificant variability between the 3 settings.
+%Similarly, the pan dimension remains more stable throughout the 3 settings.
+The participants also confirmed that they preferred the increased response rate of the \emph{hi} setting, reporting that it gave them a clearer idea of the direction they needed to point to. 
 
-These results show that a varying pitch tone can convey the tilt angle of a target to a human using bone-conducting headphones with accuracy levels similar to that in the literature~\cite{bujacz2011sonification, katz2011spatial, zotkin2004rendering}. They also highlight a clear and significant difference between the three different pitch gain gradients, with the \emph{hi} pitch-gain marginally outperforming the \emph{med} gain setting and producing the results closest to the true tilt. 
+The results collected from $G1$ and $G2$ show that a varying pitch tone can convey the tilt angle of a target to a human using bone-conducting headphones with accuracy levels similar to that in literature~\cite{bujacz2011sonification, katz2011spatial, zotkin2004rendering}.
+They also highlight a clear and significant difference between the 3 different pitch gain gradients, with the $m_l$ setting giving the lowest acquisition accuracy, while $m_m$ and $m_h$ give similar accuracy levels closest to the true tilt. 
 
 \subsection{Time to Target}
 
 \crefrange{fig:fitts-lo}{fig:fitts-hi} shows the box-plots of the target-search time as a function of the \emph{ID} of the targets.
-Here, the bin interval is the smallest effective width, calculated from Equation~\ref{eq:fitts-performance}, between the three gradient settings.
-We used the relation from Equation~\ref{eq:fitts-base} and fitted a logarithmic regression line for each participant.
-The medians of the $a$ and $b$ parameters, from Equation~\ref{eq:fitts-base}, for all the subjects' regressions were used to plot the resulting lines of best fit, shown in \crefrange{fig:fitts-lo}{fig:fitts-hi}. 
+Here, the bin interval is the smallest effective width, calculated from \cref{eq:fitts-performance}, between the 3 gradient settings.
+We used the relation from \cref{eq:fitts-base} and fitted a logarithmic regression line for each participant.
+The medians of the $a$ and $b$ parameters, from \cref{eq:fitts-base}, for all the subjects' regressions were used to plot the resulting lines of best fit, shown in \crefrange{fig:fitts-lo}{fig:fitts-hi}. 
 
 \begin{figure}
   \centering
@@ -635,28 +638,25 @@ The medians of the $a$ and $b$ parameters, from Equation~\ref{eq:fitts-base}, fo
 \begin{figure}
   \centering
   \includegraphics[clip, trim=120 20 120 20, width=0.4\textwidth]{figures/fitts_med.png}
-  \caption{\emph{Med} setting. }
-  \label{fig:fitts-med}
+  \caption{\emph{Med} setting. }\label{fig:fitts-med}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=120 20 120 20, width=0.4\textwidth]{figures/fitts_hi.png}
-  \caption{\emph{Hi} setting. }
-  \label{fig:fitts-hi}
+  \caption{\emph{Hi} setting. }\label{fig:fitts-hi}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=90 20 130 20, width=0.4\textwidth]{figures/fitts_performance.png}
-  \caption{Boxplots of the indices of performance.}
-  \label{fig:fitts-performance}
+  \caption{Boxplots of the indices of performance.}\label{fig:fitts-performance}
 \end{figure}
 
-From these figures we can see that the data are consistent with Fitts's Law where the logarithmic line of best fit very closely approximates the median values of the binned data for all three pitch gradient settings, with each settings giving Pearson scores of 0.95, 0.87 and 0.93 for the \emph{lo}, \emph{med} and \emph{hi} settings respectively ($p < 0.05$ for all settings). 
+From these figures we can see that the data are consistent with Fitts's Law where the logarithmic line of best fit very closely approximates the median values of the binned data for all 3 pitch gradient settings, with each settings giving Pearson scores of 0.95, 0.87 and 0.93 for the \emph{lo}, \emph{med} and \emph{hi} settings respectively ($p < 0.05$ for all settings). 
 This result enabled us to compute the index of performance, $IP$, given by Equation~\ref{eq:fitts-performance}, for all of the subjects.
 These results were used to plot \cref{fig:fitts-performance}, which shows that the \emph{lo} and \emph{med} configurations give similar results, but slightly different spreads, while the \emph{hi} gives a lower $IP$.
-The Friedman score for the three settings gives a $p$-value of 0.017, comfortably achieving statistical significance with a threshold of $\alpha=0.05$.
+The Friedman score for the 3 settings gives a $p$-value of 0.017, comfortably achieving statistical significance with a threshold of $\alpha=0.05$.
 The Wilcoxon test comparing the \emph{lo} and \emph{hi} settings achieves significance after applying a Bonferroni correction ($\alpha=0.016$), but the other comparisons do not achieve significance. 
 
 A possible explanation for the observed behaviour is that the more distinguishable changes in the audio pitch with the \emph{hi} configuration better informs the user when they are on target, leading to a more accurate estimate, but also increases the time it takes to point in the right direction.
@@ -690,9 +690,9 @@ In this paper, we presented a spatial audio interface to direct a user with visu
 We found that a spatial audio tone with a varying pitch can be used to convey the pan and tilt angles of a target using a set of bone-conducting headphones.
 The angular errors made by the participants are in line with those found in previous studies using similar audio interfaces.
 We also found that varying the pitch-gain gradient of our interface influences the accuracy of the system in the tilt dimension, as well as the time to target, without affecting the performance in the pan dimension.
-The steeper, \emph{hi}, pitch-gain was found to produce the best results in this respect.
+The steeper, $m_h$ and $m_m$ pitch-gains were found to produce the best results in this respect.
 Furthermore, we discovered a logarithmic relationship between the index of difficulty of a target and the time taken by a participant to find it, confirming that the results with our interface adhere to Fitts's Law.
-However, there is a compromise to be made between speed and accuracy, with the \emph{hi} pitch-gain gradient directing the user to the target in the longest time. 
+However, there is a compromise to be made between speed and accuracy, with the $m_h$ pitch-gain gradient directing the user to the target in the longest time. 
 
 Feedback from the participants with visual impairments was mostly positive and they agreed with the choice of bone-conduction headphones that do not inhibit normal hearing.
 However, they noted that the sine wave audio signal induced some audio fatigue, something noted by the other participants as well, and suggested suggested that more full-bodied, natural sounds be used instead.
