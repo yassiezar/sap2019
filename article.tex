@@ -163,35 +163,42 @@ Finally, \cref{sec:conclusion} concludes this paper with a summary of the findin
 \section{Previous Work}\label{sec:lit-review}
 
 \todo{chop up this section. Make anonymous}
-Attempting to deliver a system that allows people with visual impairments to independently navigate and accomplish everyday tasks is not new; in fact, there are multiple commercial systems and research prototypes already available on the market.
-One approach that has been investigated is to outfit the existing white walking cane with various sensors, such as sonar, radar, motor encoders, etc.~\cite{ulrich1997, marion2008batcane} to warn the user of upcoming obstacles, instead of relying on haptic feedback from the impact between the cane and the obstacle.
-Another approach is to outfit a walking cane to act as a radio-frequency identification (RFID) antenna that can read a set of RFID tags placed at strategic locations around the environment at key spots or along a path~\cite{faria2010electronic, willis2005}.
-This modification to the traditional cane is more discreet than the systems mentioned earlier and has been shown to work well.
-Bluetooth tags and a smartphone can also be used in a similar manner~\cite{sato2017navcog3}.
-However, the major drawbacks here are the significant cost and effort of modifying existing infrastructure with RFID and Bluetooth tags and maintaining them to stay up to date with a changing environment.
-GPS-based systems~\cite{ran2004drishti, loomis2001navigating, kammoun2012navigation}, while cheap and reliable in outdoor environments, are not applicable in built-up urban areas and indoors where GPS signals are notoriously unreliable.
-Computer vision-based systems provide a good compromise between usability, cost and accuracy and have been the focus of much research recently~\cite{manduchi2014last}.
-One increasingly popular solution is to use RGB-D depth sensing cameras, which are becoming increasingly more accurate and cost-effective, to build a 3D image map of the environment, allowing a user to safely traverse through it~\cite{lee2015, rodriguez2012obstacle}.
-Another approach is to use vision-based object recognition techniques to detect various objects and landmarks, such as doors, staircases, etc., and communicate their relative location to the user~\cite{schauerte2012assistive, tian2013b, fiannaca2014headlock}, or use audio instructions to instruct a user with vision impairment to fully capture an object of interest~\cite{vazquez2012helping}. 
 
-An important feature of user-centric systems is a human-machine interface (HMI) that enables effective and seamless two-way communication between the system and the user.
-In previous surveys, researchers found that people with visual impairments prefer receiving feedback and instructions in the form of speech and haptic feedback cues~\cite{khoo2016multimodal, ross2000wearable, vazquez2012helping}.
-However, haptic feedback modes typically have a lower bandwidth when compared to audio feedback and also require the user to wear a special device in order to transmit the haptic signals to the user effectively.
+Earlier attempts at improving a person with visual impairment's navigation experience involved outfitting the commonly-used walking cane with remote detection systems, such as sonar, radar and RFID tags, to transform a cane into an early-warning system~\cite{ulrich1997,marion2008batcane,faria2010electric,willis2005}.
+Bluetooth tags and a smartphone can be used in a similar manner~\cite{sato2017navcog3}.
+However, the expense and effort of maintaining such tags make them less attractive for wide-scale adoption.
+Computer vision-based systems provide a good compromise between usability, cost and accuracy.
+One increasingly popular solution is to use RGB-D depth sensing cameras, which are becoming increasingly accurate and cost-effective, to build a 3D image map of the environment, and guiding a user through it~\cite{lee2015, rodriguez2012obstacle}.
+Alternatively, object recognition techniques can be used to detect various objects and landmarks, such as doors, staircases, etc., and communicate their relative location to the user~\cite{schauerte2012assistive, tian2013b, fiannaca2014headlock}, or use audio instructions to instruct a user with vision impairment to fully capture an object of interest~\cite{vazquez2012helping}. 
+
+%Attempting to deliver a system that allows people with visual impairments to independently navigate and accomplish everyday tasks is not new; in fact, there are multiple commercial systems and research prototypes already available on the market.
+%One approach that has been investigated is to outfit the existing white walking cane with various sensors, such as sonar, radar, motor encoders, etc.~\cite{ulrich1997, marion2008batcane} to warn the user of upcoming obstacles, instead of relying on haptic feedback from the impact between the cane and the obstacle.
+%Another approach is to outfit a walking cane to act as a radio-frequency identification (RFID) antenna that can read a set of RFID tags placed at strategic locations around the environment at key spots or along a path~\cite{faria2010electronic, willis2005}.
+%This modification to the traditional cane is more discreet than the systems mentioned earlier and has been shown to work well.
+%Bluetooth tags and a smartphone can also be used in a similar manner~\cite{sato2017navcog3}.
+%However, the major drawbacks here are the significant cost and effort of modifying existing infrastructure with RFID and Bluetooth tags and maintaining them to stay up to date with a changing environment.
+%GPS-based systems~\cite{ran2004drishti, loomis2001navigating, kammoun2012navigation}, while cheap and reliable in outdoor environments, are not applicable in built-up urban areas and indoors where GPS signals are notoriously unreliable.
+%Computer vision-based systems provide a good compromise between usability, cost and accuracy and have been the focus of much research recently~\cite{manduchi2014last}.
+%One increasingly popular solution is to use RGB-D depth sensing cameras, which are becoming increasingly more accurate and cost-effective, to build a 3D image map of the environment, allowing a user to safely traverse through it~\cite{lee2015, rodriguez2012obstacle}.
+%Another approach is to use vision-based object recognition techniques to detect various objects and landmarks, such as doors, staircases, etc., and communicate their relative location to the user~\cite{schauerte2012assistive, tian2013b, fiannaca2014headlock}, or use audio instructions to instruct a user with vision impairment to fully capture an object of interest~\cite{vazquez2012helping}. 
+
+An important feature of user-centric systems is a human-machine interface (HMI) that enables effective two-way communication between the system and the user.
+In previous surveys, researchers found that people with visual impairments prefer receiving instructions in the form of speech and haptic feedback cues~\cite{khoo2016multimodal, ross2000wearable, vazquez2012helping}.
+However, haptic feedback modes typically have a lower bandwidth when compared to audio feedback and also require the user to wear a special device in order to transmit the signals effectively.
 Work has also been done in translating a visual scene into non-visual formats, with so-called sensory substitution systems (e.g. `The Voice'~\cite{meijer2010}) and virtual audio reality (VAR) systems~\cite{frauenberger2003} reporting favourable results.
-However, The Voice, while helpful, has a very steep learning curve that has proven to be a significant barrier to entry.
-With VAR systems, it is not clear how unknown environments, where markers have not yet been encoded, would be handled and described to the user. 
+However, The Voice has a very steep learning curve that has proven to be a significant barrier to entry and with VAR systems, it is not clear how unknown environments, where markers have not yet been encoded, would be handled and described to the user. 
 
-Spatial audio has also been considered to convey the direction of a target.
-Experiments have previously determined that people are able to find the location of a stationary sound source with an error of $\pm$\SI{35}{\degree}, in both the pan and tilt dimensions~\cite{zwiers2001spatial}, for both early-blind and normally-sighted people.
-However, in~\cite{lewald2013exceptional, lessard1998early} it was found that the blind have a clear advantage in localisation accuracy over sighted people when presented with more difficult tasks, such as targets in motion and narrow-band stimuli, with~\cite{lewald2013exceptional} reporting an average absolute localisation error of around \SI{10}{\degree} in the pan and tilt dimensions.
-Other authors found that the minimum difference in the spatial sound's angle for the user to be able to perceive movement is approximately \SI{1.7}{\degree}. 
-During these experiments, an audio speaker was physically manoeuvred to provide the participant with a spatialised sound tone~\cite{ashmead1998spatial}.
-Researchers have also tried using simulated spatial audio to inform the user from which direction a sound is originating~\cite{holland2002audiogps, kammoun2012navigation, rebillat2009smart, menelas2010audio, wilson2007swan, zotkin2004rendering}.
+%Spatial audio has also been considered to convey the direction of a target.
+Previous experiments have determined that people are able to find the location of a stationary sound source with an error of $\pm$\SI{35}{\degree}, in both the pan and tilt dimensions~\cite{zwiers2001spatial}, for both early-blind and normally-sighted people.
+However, in~\cite{lewald2013exceptional, lessard1998early} it was found that the blind have a clear advantage in localisation accuracy over sighted people when presented with more complex tasks, such as targets in motion and narrow-band stimuli, with~\cite{lewald2013exceptional} reporting an average absolute localisation error of around \SI{10}{\degree} in the pan and tilt dimensions.
+%Other authors found that the minimum difference in the spatial sound's angle for the user to be able to perceive movement is approximately \SI{1.7}{\degree}. 
+%During these experiments, an audio speaker was physically manoeuvred to provide the participant with a spatialised sound tone~\cite{ashmead1998spatial}.
+Researchers have used simulated spatialised audio to inform the user of the sound source's direction~\cite{holland2002audiogps, kammoun2012navigation, rebillat2009smart, menelas2010audio, wilson2007swan, zotkin2004rendering}.
 In these works, a sound was played through a set of headphones and the source spatialised with a head-related transfer function (HRTF), tricking the listener into thinking the sound source was located at some arbitrary 3D location.
-Various audition techniques and methods were then used to guide the user along a path.
-Other authors have also provided a framework for evaluating the quality of this 3D sound in terms of its psychoacoustic properties~\cite{guastavino2004perceptual, nicol2014roadmap}.
+%Various audition techniques and methods were then used to guide the user along a path.
+%Other authors have also provided a framework for evaluating the quality of this 3D sound in terms of its psychoacoustic properties~\cite{guastavino2004perceptual, nicol2014roadmap}.
 There are also experimental results about how well users can find targets presented with spatial sound in the tilt and panning dimensions with normal headphones~\cite{katz2011spatial, zwiers2001spatial}, as well as work that has shown similar levels of localisation performance between normal and bone-conducting headphones in the pan dimension~\cite{macdonald2006spatial}.
-However, to our knowledge no extensive work or experiments have been done to determine how well users respond to tilt adjustment instructions using a tone with \emph{varying pitch}, in particular when using bone-conducting headphones, and how changes to this tone's behaviour affects performance. 
+However, to our knowledge no extensive work or experiments have been done to determine how well users respond to tilt adjustment instructions using a tone with \textit{varying pitch}, in particular when using bone-conducting headphones, and how changes to this tone's behaviour affects performance. 
 
 \section{Portable Navigation System}\label{sec:portable-navigation}
 
