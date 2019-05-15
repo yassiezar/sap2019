@@ -283,40 +283,67 @@ With these limits, $f$ can be determined with \cref{eq:frequency}, where $m$ is 
   f(\theta) = 2^{-m\theta + c}
 \end{equation}
 
-\section{Experiments}\label{sec:experiments}
+\section{Target Search Experiment}\label{sec:experiments}
 
-We performed a set of experiments with our audio interface to determine its effectiveness at directing a user to adjust a camera's $\phi$ and $\theta$ to point it to a target.
-The results from the experiments allow us to better understand how the users respond to different settings for the spatial audio feedback stimulus and use them to improve and optimise the behaviour of the feedback modes in our portable navigation aid.
+We conducted a set of experiments to evaluate the audio interface's effectiveness at driving a user to point the camera at a target in the pan and tilt dimensions.
+Furthermore, we wish to see how changes to $\frac{df}{d\theta}$ affect a user's performance.
 
-The participants were given time before the experiments to familiarise themselves with the device and the tones it emits, as well as what the $f_{512}$ `on-target' tone sounds like.
-We also tested the system with 3 legally blind participants and compared their data to the blindfolded dataset.
-These latter experiments in particular provided us with valuable subjective feedback that can be used to improve future iterations.
+We recruited 2 groups of participants for the experiments.
+Group $G1$ consists of 42 young adults (mostly students) with healthy eyesight, with 10 males and 32 females being $20\pm1.5$ years old on average.
+This group was blindfolded throughout the experiment and forms the bulk of the participant population.
+Group $G2$ is made up of 3 legally blind adults with varying levels of vision limits (3 males, average age of $40\pm8$ years). 
+This group makes up less than 10\% of the total population, but provided valuable subjective feedback that will help improve the system before evaluating it with a larger group of people with vision impairments. 
+All participants joined the experiment on a voluntary basis with written consent and none have any other impairments that affects their interpretation of the audio guidance cues.
 
-For the experiments we used two groups of participants, with one ($G1$) including 42 sighted and blindfolded participants and the other ($G2$) 3 legally blind volunteers with varying degrees of vision impairment. 
-They performed a series of experiments using our system with a pair of `AfterShockz Sport3' bone-conducting headphones.
-The participants were recruited on a volunteer-basis and consisted of a diverse group of undergraduate students and professionals with ages ranging between 17 and 40 years ($\mu=22\pm3.5$ years, 13 male, 32 female) and did not not have significant hearing issues or any other disability that could affect the experiment.
+For the experiment, the participants were given a Tango tablet device, running an app written for this experiment, and a pair of AfterShockz Sportz3' bone conducting headphones (both pictured in \cref{fig:tango-headphone}) and were blindfolded where appropriate.
+The app generates a virtual target, one at a time and a constant \SI{2}{\metre} from the participant, and uses the device's measurements to determine $\phi$ and $\theta$.
+These angles are then used to generate and present the user with the audio signal to direct them to the target. 
+As the participant rotates the camera, $\phi$ and $\theta$ are adjusted and the audio signal changes according to reflect the changes.
+When a participant was satisfied that they were on target, they tapped the screen which generated a new target target which they were then directed to. 
+Each participant was given 28 targets in total that were randomly generated and equally spread across 4 quadrants to avoid clustering. 
+After the 28 targets were found, the gradient setting ($m$ in \cref{eq:frequency}) was adjusted and the experiment was repeated. 
+The order in which the gradient setting was changed for each participant was randomised to minimise any the learning effect.
+The app streams various data on the current device and target poses to a laptop computer via a WiFi connection in real-time. 
+Before the experiment session started, each participant was given some time to familiarise themselves with the device and the audio tone and was given the oppertunity to learn what the $f_{512}$ `on-target' and on-centre tone sounds like that will confirm that they are level with the target.
 
-We are only evaluating the interface in the pan and tilt dimensions and the 3D targets are therefore generated at a constant distance of \SI{2}{\metre} from the participant.
-Throughout the experiments, various parameters of the targets and participants were recorded and streamed in real-time to a laptop computer via a WiFi connection.
+The measure of performance here is the accuracy with which a user points the camera towards a target.
+The accuracy is taken as the angular difference between the device's and target's poses at the time the participant tapped the screen and a smaller error would indicate more accurate results.
+The pan and tilt results are separated to understand the effect of changing the gradient setting has on either dimension's accuracy.
+To minimise the speed/accuracy biases in the results, we asked the participants to focus on finding the targets as well as they could without worrying about the time it took.  
 
-For the experiment, the participants were blindfolded where necessary and given a Tango device running an app purpose-written for this experiment.
-When started, a set of virtual targets were presented one at a time to the participant on the device.
-Then, depending on the direction the participant was currently pointing the camera relative to the target's position, the Tango generated and played a tone via the bone-conducting headphones to indicate the pan and tilt angle adjustment required to point the camera to the target. 
 
-Once the participant pointed the camera toward where they thought the target was located, they had to tap the screen to confirm the target's perceived location at which point a new target was presented and the search-process was repeated.
-28 targets were presented to each participant per run.
-The positions of these targets were randomly generated and equally spread across the 4 quadrants on the vertical plane to prevent a clustering of targets at the same location.
-After every experiment run, the gradient ($m$ in \cref{eq:frequency}) was adjusted to make the pitch increase at a lower or higher rate.
-This was done to see whether, for example, a more rapid increase in pitch would help the participant find the target faster or more accurately.
+%We performed a set of experiments with our audio interface to determine its effectiveness at directing a user to adjust a camera's $\phi$ and $\theta$ to point it to a target.
+%The results from the experiments allow us to better understand how the users respond to different settings for the spatial audio feedback stimulus and use them to improve and optimise the behaviour of the feedback modes in our portable navigation aid.
 
-To minimise any speed/accuracy trade-off bias in the results, we asked the participants to search for the targets without placing particular emphasis on accuracy or time. 
-The order in which the settings were set for each participant was randomised in order to minimise any learning effect the participant population might display between each experiment. 
+%The participants were given time before the experiments to familiarise themselves with the device and the tones it emits, as well as what the $f_{512}$ `on-target' tone sounds like.
+%We also tested the system with 3 legally blind participants and compared their data to the blindfolded dataset.
+%These latter experiments in particular provided us with valuable subjective feedback that can be used to improve future iterations.
 
-In this case, the system's measure of performance is given by the target acquisition accuracy.
-The accuracy is given as the difference between the device's orientation at the time the participant confirmed they were on target, and the target's actual angular position.
-We separate the results of the tilt and pan dimensions in order to determine how the different pitch settings affect pointing accuracy. 
+%For the experiments we used two groups of participants, with one ($G1$) including 42 sighted and blindfolded participants and the other ($G2$) 3 legally blind volunteers with varying degrees of vision impairment. 
+%They performed a series of experiments using our system with a pair of `AfterShockz Sport3' bone-conducting headphones.
+%The participants were recruited on a volunteer-basis and consisted of a diverse group of undergraduate students and professionals with ages ranging between 17 and 40 years ($\mu=22\pm3.5$ years, 13 male, 32 female) and did not not have significant hearing issues or any other disability that could affect the experiment.
 
-\section{Experiment Results and Discussion}\label{sec:results}
+%We are only evaluating the interface in the pan and tilt dimensions and the 3D targets are therefore generated at a constant distance of \SI{2}{\metre} from the participant.
+%Throughout the experiments, various parameters of the targets and participants were recorded and streamed in real-time to a laptop computer via a WiFi connection.
+
+%For the experiment, the participants were blindfolded where necessary and given a Tango device running an app purpose-written for this experiment.
+%When started, a set of virtual targets were presented one at a time to the participant on the device.
+%Then, depending on the direction the participant was currently pointing the camera relative to the target's position, the Tango generated and played a tone via the bone-conducting headphones to indicate the pan and tilt angle adjustment required to point the camera to the target. 
+
+%Once the participant pointed the camera toward where they thought the target was located, they had to tap the screen to confirm the target's perceived location at which point a new target was presented and the search-process was repeated.
+%28 targets were presented to each participant per run.
+%The positions of these targets were randomly generated and equally spread across the 4 quadrants on the vertical plane to prevent a clustering of targets at the same location.
+%After every experiment run, the gradient ($m$ in \cref{eq:frequency}) was adjusted to make the pitch increase at a lower or higher rate.
+%This was done to see whether, for example, a more rapid increase in pitch would help the participant find the target faster or more accurately.
+
+%To minimise any speed/accuracy trade-off bias in the results, we asked the participants to search for the targets without placing particular emphasis on accuracy or time. 
+%The order in which the settings were set for each participant was randomised in order to minimise any learning effect the participant population might display between each experiment. 
+
+%In this case, the system's measure of performance is given by the target acquisition accuracy.
+%The accuracy is given as the difference between the device's orientation at the time the participant confirmed they were on target, and the target's actual angular position.
+%We separate the results of the tilt and pan dimensions in order to determine how the different pitch settings affect pointing accuracy. 
+
+\section{Results}\label{sec:results}
 
 \subsection{Pan Results}
 
