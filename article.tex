@@ -463,7 +463,7 @@ Future improvements to our audio interface should consider a non-linear increase
 The results collected from $G1$ and $G2$ show that a varying pitch tone can convey the tilt angle of a target to a human using bone-conducting headphones with accuracy levels similar to that in literature~\cite{bujacz2011sonification, katz2011spatial, zotkin2004rendering}.
 They also highlight a clear and significant difference between the 3 different pitch gain gradients, with the $m_l$ setting giving the lowest acquisition accuracy, while $m_m$ and $m_h$ give similar accuracy levels closest to the true tilt. 
 
-\subsection{Participant with Visual Impairments' Feedback}
+\subsection{Participants with Visual Impairment's Feedback}
 
 After the experiments with the participants with visual impairments in $G2$ were completed, we took the opportunity to collect their feedback on the audio interface's current implementation and gather suggestions for improvements for future iterations.
 When asked about their opinions on current assistive systems available on the market, the general consensus was that these systems are typically too prohibitively expensive, too complex and cumbersome to be useful for everyday use.
@@ -503,21 +503,27 @@ None of the participants had any technical issues using the headphones or mobile
 
 \section{Conclusion and Future Work}\label{sec:conclusion}
 
-In this paper, we presented a spatial audio interface to direct a user with visual impairments to point a camera toward a target. We also discussed a set of experiments to determine its effectiveness and performance, as well as some subjective feedback collected from participants with partial eyesight. 
+In this work, we present an audio-based guidance interface that uses a spatialised audio tone with varying pitch to direct a user with visual impairments to point a camera toward a target. 
+We also present and discuss a set of experiments that were conducted  to determine the interface's effectiveness and performance, as well as some subjective feedback that was collected from participants with partial eyesight. 
 
-We found that a spatial audio tone with a varying pitch can be used to convey the pan and tilt angles of a target using a set of bone-conducting headphones.
-The angular errors made by the participants are in line with those found in previous studies using similar audio interfaces.
-We also found that varying the pitch-gain gradient of our interface influences the accuracy of the system in the tilt dimension, as well as the time to target, without affecting the performance in the pan dimension.
-The steeper, $m_h$ and $m_m$ pitch-gains were found to produce the best results in this respect.
+Using a set of bone-conducting headphones, we found that a spatialised audio tone with a varying pitch can successfully convey the pan and tilt angles of a target.
+The angular errors made by the participants are in line with those from previous research using similar audio guidance instructions.
+We also found that varying the pitch's rate of change influences the accuracy of the system in the tilt dimension without affecting the performance in the pan dimension.
+The steeper, $m_h$ and $m_m$ pitch gradients were found to produce the best results in this respect.
 %Furthermore, we discovered a logarithmic relationship between the index of difficulty of a target and the time taken by a participant to find it, confirming that the results with our interface adhere to Fitts's Law.
 %However, there is a compromise to be made between speed and accuracy, with the $m_h$ pitch-gain gradient directing the user to the target in the longest time. 
 
 Feedback from the participants with visual impairments was mostly positive and they agreed with the choice of bone-conduction headphones that do not inhibit normal hearing.
-However, they noted that the sine wave audio signal induced some audio fatigue, something noted by the other participants as well, and suggested suggested that more full-bodied, natural sounds be used instead.
+However, they noted that the sine wave audio signal induced audio fatigue after extended exposure, something noted by the other participants as well, and suggested that more full-bodied, natural sounds be used instead.
 Using vocal feedback in conjunction with the current audio signal was also suggested. 
 
-Future research will focus on integrating voice and vibration feedback cues into the system.
-We are also investigating solutions to automatically refine the parameters of the HMI and better match the individual user's navigation habits and capability, thereby increasing navigation performance and user satisfaction.
+These results are more interesting from a design point of view than an end-user's. 
+Indeed, we have shown that this audio guidance interface is effective at driving an average person, but more data are needed with the intended audience (i.e.\ people with vision impairments) in order to decisively conclude that this interface will be effective in an indoor guidance system for people with vision impairments. 
+Nevertheless, these data are a good indication of what to expect when we evaluate this audio interface with a greater number of people with limited vision.
+Once we have determined that the intended audience can effectively use this type of guidance instruction, we can start adding more user-orientated features (e.g.\ voice prompts, more pleasant tones, etc.) and star working on integrating it into our guidance system prototype. 
+
+%Future research will focus on integrating voice and vibration feedback cues into the system.
+%We are also investigating solutions to automatically refine the parameters of the HMI and better match the individual user's navigation habits and capability, thereby increasing navigation performance and user satisfaction.
 
 \bibliographystyle{ACM-Reference-Format}
 %\bibliography{bib}
