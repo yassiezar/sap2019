@@ -344,38 +344,38 @@ To minimise the speed/accuracy biases in the results, we asked the participants 
 
 \section{Results and Discussion}\label{sec:results}
 
-The results for the participants in $G1$ given if the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the pan error is on the abscissa and the tilt error on the ordinates.
+The results for the participants are given if the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the pan error is on the abscissa and the tilt error on the ordinates.
 A set of box-plots of the angular errors' median and standard deviations are given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for the $m_l, m_m$ and $m_h$ settings. 
-The results for $G1$ are summarised in \cref{tab:results}.
+The results for $G1$ are summarised in \cref{tab:results}, while the results for $G2$ are given in \cref{tab:vi-results}.
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
-  \caption{Angular error data for $G1$ and the $m_l$ setting. }\label{fig:err-results-lo}
+  \caption{Angular error data for the $m_l$ setting. }\label{fig:err-results-lo}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
-  \caption{Angular error data for $G1$ and the $m_m$ setting. }\label{fig:err-results-med}
+  \caption{Angular error data for the $m_m$ setting. }\label{fig:err-results-med}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
-  \caption{Angular error data for $G1$ and the $m_h$ setting. }\label{fig:err-results-hi}
+  \caption{Angular error data for and the $m_h$ setting. }\label{fig:err-results-hi}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=20 -70 100 100, width=0.8\columnwidth]{figures/err_boxplot_medians.png}
-  \caption{Error medians for $G1$.}\label{fig:err-boxplot-median}
+  \caption{Error medians for the pan and tilt dimension and each gradient setting.} \label{fig:err-boxplot-median}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=80 -70 100 0, width=0.8\columnwidth]{figures/err_boxplot_std.png}
-  \caption{Error standard deviations for $G1$.}\label{fig:err-boxplot-std}
+  \caption{Error standard deviations for the pan and tilt dimensions and each gradient setting.}\label{fig:err-boxplot-std}
 \end{figure}
 
 \begin{table}
@@ -394,22 +394,6 @@ The results for $G1$ are summarised in \cref{tab:results}.
   \end{tabular}
 \end{table}
 
-\subsection{Pan Results}
-
-
-\crefrange{fig:err-results-lo}{fig:err-results-hi} and the median and mean points from the box-plots in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} show that the data in the pan dimension is approximately normally distributed around zero.
-However, $p$-scores below the critical 0.05 level from the Shapiro-Wilkes test and inspection of the quantile-quantile (Q-Q) plots do not give enough confidence to consider the data as normally distributed and we therefore analyse the data through non-parametric techniques. 
-
-For the data collected from $G1$, there is a strong linear correlation between the participants' guesses and the targets' true pan angles, shown by the high Spearman correlation scores of approximately 0.75 ($p < 0.01$) for all of the datasets, with the $m_m$ setting displaying the marginally best result of 0.77.
-The 3 settings have similar average errors and standard deviations, with the $m_m$ setting again producing the marginally best results with the smallest average error and standard deviation.
-However, the differences are relatively small (approximately 6\%) and are not significant enough (Friedman test $p \gg 0.05$) to conclude that the pitch gradient has an effect on the target acquisition accuracy performance in the pan dimension. 
-
-The data collected from $G2$ follow a similar trend to that of $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
-These results are summarised in \cref{tab:vi-results}.
-Unfortunately, not enough samples could be collected to draw any final conclusions.
-However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
-In addition, they also confirm that a participant's target search capability in the pan dimension is robust to the changing pitch for the target's tilt angle which is a useful result in support of the effectiveness of our audio interface.
-
 \begin{table}
   \centering
   \caption{A table summarising the target search results of the participants in $G2$ (P1 - P3). The results include the average error ($\mu$) and standard deviation ($\sigma$), given in radians in the pan and tilt dimensions.}\label{tab:vi-results}
@@ -427,25 +411,48 @@ In addition, they also confirm that a participant's target search capability in 
   \end{tabular}
 \end{table}
 
+\subsection{Pan Results}
+
+\crefrange{fig:err-results-lo}{fig:err-results-hi} and the median and mean points from the box-plots in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} show that the data in the pan dimension are approximately normally distributed around zero.
+However, a Shapiro-Wilkes test score below the critical threshold do not give enough confidence to consider the data as normally distributed and we therefore analyse the data through non-parametric techniques. 
+
+For the data collected from $G1$, there is a strong linear correlation between the participants' guesses and the targets' true pan angles, shown by the high Spearman correlation scores of approximately 0.75 ($p < 0.01$) for all of the datasets, with the $m_m$ setting displaying the marginally best result of 0.77.
+The 3 settings have similar average errors and standard deviations, with the $m_m$ setting again producing the marginally best results with the smallest average error and standard deviation.
+However, the differences are relatively small (approximately 6\%) and are not significant enough (Friedman test $p = 0.92$) to conclude that the pitch gradient has an effect on the target acquisition accuracy performance in the pan dimension. 
+
+The data collected from $G2$ follow a similar trend to that of $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
+These results are summarised in \cref{tab:vi-results}.
+Unfortunately, not enough samples could be collected to draw any final conclusions.
+However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
+
+These results show that both groups managed to find the targets with reasonable level of accuracy and that the pan error is robust to changes to the pitch and its rate of change; a useful result in support of the effectiveness of this audio interface.
+
 \subsection{Tilt Results}\label{sec:tilt-results}
 
-The ordinates in \crefrange{fig:err-results-lo}{fig:err-results-hi} also show the results recorded during the experiment with $G1$ in the tilt direction.
-A set of box-plots are given in \cref{fig:err-boxplot-median} to show the average tilt error between the participants in $G1$'s guesses and the targets' true positions.
-All of the results are summarised in \cref{tab:results}. 
-The data here are also considered not normally distributed following inspections of the Q-Q plots and Shapiro-Wilkes test results and are analysed accordingly.
+%The ordinates in \crefrange{fig:err-results-lo}{fig:err-results-hi} also show the results recorded during the experiment with $G1$ in the tilt direction.
+%A set of box-plots are given in \cref{fig:err-boxplot-median} to show the average tilt error between the participants in $G1$'s guesses and the targets' true positions.
+%All of the results are summarised in \cref{tab:results}. 
+%The data here are also considered not normally distributed following inspections of the Q-Q plots and Shapiro-Wilkes test results and are analysed accordingly.
 
-We found that there is reasonably significant correlation between the participants' guesses and the actual locations of the targets, shown by moderate Spearman correlation scores of approximately 0.38 for \emph{lo}, 0.48 for \emph{med} and the \emph{hi} gradient giving the strongest R-scores of the 3 with a score of 0.55 ($p < 0.01$ for all 3 settings).
-This indicates that the varying pitch is working as expected and the participants are generally interpreting the cues correctly. 
+The data within the tilt dimension are also found to be non-normal following scored below the critical threshold from the Shapiro-Wilkes test.
+The Spearman test for the data reveals a reasonably significant correlation between the participants' guesses and the actual locations of the targets, with correlation scores of approximately 0.38 for $m_l$, 0.48 for $m_m$ and the $m_h$ gradient giving the strongest correlation score with 0.55 ($p < 0.01$ for all 3 settings).
+This indicates that the participants generally interpret the cues from the varying the pitch correctly and are mostly successful at pointing the camera in the correct tilt angle.
 
-The average errors of the datasets are relatively close to one another, with the $m_l$ setting producing the largest absolute error and standard deviation at \SI{0.40}{\radian} and \SI{0.46}{\radian}.
+The average errors of the datasets are relatively close to one another, with the $m_l$ setting producing the largest absolute error and standard deviation at \SI{0.40}{\radian} and \SI{0.46}{\radian} respectively.
 The $m_m$ and $m_h$ settings have similar absolute errors of \SI{0.32}{\radian} and \SI{0.34}{\radian} respectively.
-This is in line with the correlation scores, with $m_l$ giving a worst result and $m_h$ giving the best results overall, with highest correlation score and relatively low absolute angular errors and standard deviation, marginally beating $m_m$. 
+This is in line with the correlation scores, with $m_l$ giving the worst result and $m_h$ giving the best results overall, with highest correlation score and relatively low absolute angular errors and standard deviation, marginally beating $m_m$. 
 
-We use the Friedman test on the medians of the data to better understand the difference differences between the datasets.
-We use the median values here since the data are not normally spread and there is significant noise within the data which may contaminate the mean values.
-The Friedman test indicates a statistically significant difference between the 3 settings ($p < 0.01$).
-A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.04}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different than the $m_l$ setting ($p=0.0014$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42$).
-This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns.
+Since the data are not normally spread and there is significant levels of noise within the data which may contaminate the mean values, we use the medians to analyse the datasets.
+For this, the Friedman test is used on the medians and it was found that there is a significant difference between the 3 settings' datasets ($p < 0.01$).
+A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.05}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different from the $m_l$ setting ($p=0.0014<\alpha$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42>\alpha$).
+This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns and that we cannot conclude that the $m_h$ setting is better than the $m_m$ gradient.
+However, both settings conclusively produce more accurate results than the $m_l$ setting.
+
+%We use the Friedman test on the medians of the data to better understand the difference differences between the datasets.
+%We use the median values here since the data are not normally spread and there is significant noise within the data which may contaminate the mean values.
+%The Friedman test indicates a statistically significant difference between the 3 settings ($p < 0.01$).
+%A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.04}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different than the $m_l$ setting ($p=0.0014$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42$).
+%This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns.
 
 From \cref{fig:err-boxplot-median} it can also be seen that the data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
 From the results, it is not completely clear what causes this negative bias in the pitch dimension.
@@ -458,23 +465,41 @@ They also highlight a clear and significant difference between the 3 different p
 
 \subsection{Participant with Visual Impairments' Feedback}
 
-After and during the experiments involving the participants with visual impairments, we had the opportunity to collect their feedback on the current system implementation and suggestions for future improvements.
+After the experiments with the participants with visual impairments in $G2$ were completed, we took the opportunity to collect their feedback on the audio interface's current implementation and gather suggestions for improvements for future iterations.
+When asked about their opinions on current assistive systems available on the market, the general consensus was that these systems are typically too prohibitively expensive, too complex and cumbersome to be useful for everyday use.
+Indeed, they seemed quite enthusiastic about a guidance system that they can use on a mobile phone.
 
-In general, they were satisfied with the current implementation and had little difficulty using it.
-Furthermore, the prohibitive cost, complexity and cumbersomeness of other existing systems discouraged our subjects from purchasing and using them, so they were quite enthusiastic about our goal of developing a mobile or tablet-based indoor navigation system. 
+They were also generally satisfied with the guidance interface in its current form and had little problem learning how to use it.
+However, they, along with the participants in $G1$, reported auditory fatigue caused by long-term exposure to the sinusoidal audio tone.
+We were aware of this issue before the experiments were conducted and have considered replacing the simple sine wave tone with more natural and pleasant sounds.
+For example, musical instruments can be used to play different notes and scales to indicate different elevation angles~\cite{brewster1998using}.
+Furthermore, they suggested adding some voice component or tone prompt to confirm when they are on target, inform them of other important events or happenings or simply to intermittently assure them that the system is still active and that they are still on course.
+The former 2 suggestions were intentionally ignored in order to purely evaluate how accurately the audio tone can guide a user to the target.
+Going forward, however, these suggestions will be helpful for a commercial release version of the guidance system to make the guidance instructions clearer and to reassure users that the app has not crashed, for example.
 
-One aspect of the audio interface that requires improvement is the tone used during the experiments was not very pleasant and led to auditory fatigue after a long period of use.
-We are aware of this issue and we are already investigating more natural, `pleasant' and rich sounds to replace the basic sinusoidal wave that was used in the experiments.
-One possibility is to use musical instruments (e.g.\ MIDI sound files) to play notes and scales~\cite{brewster1998using}.
+On the hardware, only one participant had reservations regarding the choice of bone-conducting headphones, citing cost concerns. 
+However, he indicated that he could justify purchasing a set of bone-conducting headphones if he were to use them throughout the day to avoid cutting off environmental sounds.
+None of the participants had any technical issues using the headphones or mobile device and were able to properly use and interpret the guidance instructions.
 
-Concerning the bone-conducting headsets, only one participant had reservations about this choice, citing cost concerns.
-None of the participants had any technical issues in using the headset or misunderstanding audio cues.
-They all agreed that this is a valid choice to avoid cutting a person with visual impairments off from environmental sounds.
-Furthermore, they suggested to add some voice component to the system to inform the user of important events (e.g. \emph{`Target has been found'}, \emph{`You are veering off course'}, etc.) or to simply confirm and reassure the user that they are still on course.
+%A last suggestion 
 
-The final major suggestion was to add some form of on-target confirmation, either voice, vibration or some other audio cue.
-For the purposes of this experiment, we purposefully opted to not inform the participant when they were on target, since we are interested in the target acquisition accuracy.
-However, going forward we intend on adding an on-target notification in the form of an additional tone overlaid over the main tone. 
+%After and during the experiments involving the participants with visual impairments, we had the opportunity to collect their feedback on the current system implementation and suggestions for future improvements.
+
+%In general, they were satisfied with the current implementation and had little difficulty using it.
+%Furthermore, the prohibitive cost, complexity and cumbersomeness of other existing systems discouraged our subjects from purchasing and using them, so they were quite enthusiastic about our goal of developing a mobile or tablet-based indoor navigation system. 
+
+%One aspect of the audio interface that requires improvement is the tone used during the experiments was not very pleasant and led to auditory fatigue after a long period of use.
+%We are aware of this issue and we are already investigating more natural, `pleasant' and rich sounds to replace the basic sinusoidal wave that was used in the experiments.
+%One possibility is to use musical instruments (e.g.\ MIDI sound files) to play notes and scales~\cite{brewster1998using}.
+
+%Concerning the bone-conducting headsets, only one participant had reservations about this choice, citing cost concerns.
+%None of the participants had any technical issues in using the headset or misunderstanding audio cues.
+%They all agreed that this is a valid choice to avoid cutting a person with visual impairments off from environmental sounds.
+%Furthermore, they suggested to add some voice component to the system to inform the user of important events (e.g. \emph{`Target has been found'}, \emph{`You are veering off course'}, etc.) or to simply confirm and reassure the user that they are still on course.
+
+%The final major suggestion was to add some form of on-target confirmation, either voice, vibration or some other audio cue.
+%For the purposes of this experiment, we purposefully opted to not inform the participant when they were on target, since we are interested in the target acquisition accuracy.
+%However, going forward we intend on adding an on-target notification in the form of an additional tone overlaid over the main tone. 
 
 \section{Conclusion and Future Work}\label{sec:conclusion}
 
