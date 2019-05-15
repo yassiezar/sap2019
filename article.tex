@@ -311,7 +311,6 @@ The accuracy is taken as the angular difference between the device's and target'
 The pan and tilt results are separated to understand the effect of changing the gradient setting has on either dimension's accuracy.
 To minimise the speed/accuracy biases in the results, we asked the participants to focus on finding the targets as well as they could without worrying about the time it took.  
 
-
 %We performed a set of experiments with our audio interface to determine its effectiveness at directing a user to adjust a camera's $\phi$ and $\theta$ to point it to a target.
 %The results from the experiments allow us to better understand how the users respond to different settings for the spatial audio feedback stimulus and use them to improve and optimise the behaviour of the feedback modes in our portable navigation aid.
 
@@ -343,13 +342,11 @@ To minimise the speed/accuracy biases in the results, we asked the participants 
 %The accuracy is given as the difference between the device's orientation at the time the participant confirmed they were on target, and the target's actual angular position.
 %We separate the results of the tilt and pan dimensions in order to determine how the different pitch settings affect pointing accuracy. 
 
-\section{Results}\label{sec:results}
+\section{Results and Discussion}\label{sec:results}
 
-\subsection{Pan Results}
-
-The results from the target search experiment for the participants in $G1$ in the pan dimension are given on the abscissa of the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the angular errors in the pan and tilt directions are plotted against each other.
-A set of box-plots of the pan errors' median and standard deviations are also given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for each of the $m_l, m_m$ and $m_h$ setting. 
-The results are summarised in \cref{tab:results}.
+The results for the participants in $G1$ given if the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the pan error is on the abscissa and the tilt error on the ordinates.
+A set of box-plots of the angular errors' median and standard deviations are given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for the $m_l, m_m$ and $m_h$ settings. 
+The results for $G1$ are summarised in \cref{tab:results}.
 
 \begin{figure}
   \centering
@@ -396,6 +393,9 @@ The results are summarised in \cref{tab:results}.
     \bottomrule
   \end{tabular}
 \end{table}
+
+\subsection{Pan Results}
+
 
 \crefrange{fig:err-results-lo}{fig:err-results-hi} and the median and mean points from the box-plots in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} show that the data in the pan dimension is approximately normally distributed around zero.
 However, $p$-scores below the critical 0.05 level from the Shapiro-Wilkes test and inspection of the quantile-quantile (Q-Q) plots do not give enough confidence to consider the data as normally distributed and we therefore analyse the data through non-parametric techniques. 
