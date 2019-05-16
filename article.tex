@@ -6,6 +6,7 @@
 \usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{subcaption}
 \usepackage[capitalise]{cleveref}
 
 % For editing
@@ -80,10 +81,9 @@
 \begin{abstract}
 	Our aim is to build a portable active navigation system for the visually impaired that uses active perception techniques and a combination of feedback modes to identify a scene and guide a user to their destination.
 	Such a system requires a non-visual feedback interface and in this paper we investigate the effectiveness of a spatial audio tone with a varying pitch component, played through bone-conducting headphones, in conveying the pan and tilt angles of a target to the user in a pointing task.
-	The goal is to determine how changes to the rate of change of the pitch affects a user's performance.
-	For this, we conducted a set of experiments with blindfolded and visually impaired users and found that the varying pitch component gives an average error of approximately \SI{20}{\degree} when searching for a target; in line with previous results from other authors.
-\end{abstract}
-
+	The secondary goal is to determine how variations to the pitch rate of change of the pitch affects a user's performance.
+	For this, we conducted a set of experiments with blindfolded and user with visual impairments and found that, with some limitations, a spatialised audio tone with a varying pitch component can successfully convey a target's pan and tilt angles. 
+\end{abstract} 
  \begin{CCSXML}
 <ccs2012>
 <concept>
@@ -116,16 +116,30 @@ In particular, researchers in the active vision field have have made much progre
 There is, however, a significant research question about whether techniques from active machine vision can be applied to humans, i.e.\ can a machine identify a point of interest in a scene and direct a human, instead of an electronic servo, to focus on that point?
 If this can be done, it would be beneficial to people with visual impairments and will augment their ability to search for an arbitrary point or object of interest and identify an unknown scene. 
 
-To this end, we are developing a mobile navigation system using a Google Project Tango tablet device\footnote{https://developers.google.com/tango}, pictured in \cref{fig:tango-headphone}, that caters to the perception limitations of people with vision impairments by using a non-visual interface.
+To this end, we are developing a mobile navigation system using a Google Project Tango tablet device\footnote{https://web.archive.org/web/20170714185918/https://developers.google.com/tango/}, pictured in \cref{fig:tango-headphone}, that caters to the perception limitations of people with vision impairments by using a non-visual interface.
 This system will ultimately allow users with visual impairments to reach a target location in the final leg of their journey, i.e.\ the so-called `last 10 yards' problem~\cite{google2016blind,bellotto2013}. 
 The ideas here can also be extended and applied to mainstream navigation tools, such as Google Maps.
 A Tango-enabled device comes pre-equipped with powerful image-processing, localisation and depth-perception capabilities and is built on top of a standard Android platform, providing access to the entire set of input/output options that this operating system has to offer.
 %The final system will use multiple feedback modes (vibration, audio and voice) to guide a user toward a target destination while providing information on any oncoming obstacles.
 
+%\begin{figure}
+  %\centering
+  %\includegraphics[width=0.5\columnwidth]{figures/tango_headphone.png}
+  %\caption{The Tango device and bone-conducting headset the system is based on. }\label{fig:tango-headphone}
+%\end{figure}
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\columnwidth]{figures/tango_headphone.png}
-  \caption{The Tango device and bone-conducting headset the system is based on. }\label{fig:tango-headphone}
+  \begin{subfigure}[t]{0.5\columnwidth}
+    \includegraphics[width=1.0\columnwidth]{figures/tango_headphone.png}
+    \caption{}\label{fig:tango-headphone}
+  \end{subfigure}%
+  ~
+  \begin{subfigure}[t]{0.5\columnwidth}
+    \centering
+    \includegraphics[width=0.7\columnwidth]{figures/vi_participant.pdf}
+    \caption{}\label{fig:participant}
+  \end{subfigure}
+  \caption{Pictures of the Tango device and bone-conducting headphones the system is based on (left) and them in use in an experiment (right).}
 \end{figure}
 
 For this work, we implement and evaluate an audio guidance interface that will be implemented in the guidance system to provide navigation instructions to the user. 
@@ -268,17 +282,19 @@ The values of $m_l, m_m, m_h$ are visualised in \cref{fig:pitch-gain}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=1.0\columnwidth]{figures/pitch_gain_functions.png}
-  \caption{The pitch gain functions for the 3 different gain settings. }\label{fig:pitch-gain}
+  \includegraphics[clip, trim=0 0 0 40, width=1.0\columnwidth]{figures/pitch_gain_functions.png}
+  \caption{The pitch gain functions for the 3 different gain settings ($y$-axis in log scale). }\label{fig:pitch-gain}
 \end{figure}
 
 We set the range of angles the system can convey to $[-\frac{\pi}{2}; \frac{\pi}{2}]$; anything outside this range implies that the target is behind the user and was not considered in this series of experiments. 
 The \SI{0}{\radian} position is directly in front of the user.
-With these limits, $f$ can be determined with \cref{eq:frequency}, where $m$ is the given setting's gradient while $c$ can be found using the current setting's pitch and angle limits.
+With these limits, $f$ can be determined with 
 
 \begin{equation}\label{eq:frequency}
-  f(\theta) = 2^{-m\theta + c}
+  f(\theta) = 2^{b\theta + c},
 \end{equation}
+
+where $b$ and $c$ for each setting can be calculated with the given setting's pitch and angle limits and a linear graph equation (i.e.\ $f - f_1 = b(\theta - \theta_1), b=\frac{\Delta f}{\Delta\theta}$).
 
 \section{Target Search Experiment}\label{sec:experiments}
 
@@ -303,11 +319,11 @@ The order in which the gradient setting was changed for each participant was ran
 The app streams various data on the current device and target poses to a laptop computer via a WiFi connection in real-time. 
 Before the experiment session started, each participant was given some time to familiarise themselves with the device and the audio tone and was given the opportunity to learn what the $f_{512}$ `on-target' and on-centre tone sounds like that will mean that they are pointing at the target.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\columnwidth]{figures/vi_participant.pdf}
-  \caption{A picture of the Tango device and bone-conducting headphones in use during an experiment.}\label{fig:participant}
-\end{figure}
+%\begin{figure}
+  %\centering
+  %\includegraphics[width=0.4\columnwidth]{figures/vi_participant.pdf}
+  %\caption{A picture of the Tango device and bone-conducting headphones in use during an experiment.}\label{fig:participant}
+%\end{figure}
 
 The measure of performance here is the accuracy with which a user points the camera towards a target.
 The accuracy is taken as the angular difference between the device's and target's poses at the time the participant tapped the screen.
@@ -478,8 +494,8 @@ However, they, along with the participants in $G1$, reported auditory fatigue ca
 We were aware of this issue before the experiments were conducted and have considered replacing the simple sine wave tone with more natural and pleasant sounds.
 For example, musical instruments can be used to play different notes and scales to indicate different elevation angles~\cite{brewster1998using}.
 Furthermore, they suggested adding some voice component or tone prompt to confirm when they are on target, inform them of other important events or happenings or simply to intermittently assure them that the system is still active and that they are still on course.
-The former 2 suggestions were intentionally ignored in order to purely evaluate how accurately the audio tone can guide a user to the target.
-Going forward, however, these suggestions will be helpful for a commercial release version of the guidance system to make the guidance instructions clearer and to reassure users that the app has not crashed, for example.
+The former two suggestions were intentionally ignored in order to purely evaluate how accurately the audio tone can guide a user to the target.
+Going forward, however, these suggestions will be helpful for a potential commercial release version of the guidance system to make the guidance instructions clearer and to intermittently reassure users that they are still on the right course, for example.
 
 On the hardware, only one participant had reservations regarding the choice of bone-conducting headphones, citing cost concerns. 
 However, he indicated that he could justify purchasing a set of bone-conducting headphones if he were to use them throughout the day to avoid cutting off environmental sounds.
@@ -522,9 +538,9 @@ However, they noted that the sine wave audio signal induced audio fatigue after 
 Using vocal feedback in conjunction with the current audio signal was also suggested. 
 
 These results are more interesting from a design point of view than an end-user's. 
-Indeed, we have shown that this audio guidance interface is effective at driving an average person, but more data are needed with the intended audience (i.e.\ people with vision impairments) in order to decisively conclude that this interface will be effective in an indoor guidance system for people with vision impairments. 
+Indeed, we have shown that this audio guidance interface is effective at driving an average person, but more data are needed with the intended audience in order to decisively conclude that this interface will be effective in an indoor guidance system for people with vision impairments. 
 Nevertheless, these data are a good indication of what to expect when we evaluate this audio interface with a greater number of people with limited vision.
-Once we have determined that the intended audience can effectively use this type of guidance instruction, we can start adding more user-orientated features (e.g.\ voice prompts, more pleasant tones, etc.) and star working on integrating it into our guidance system prototype. 
+Once we have determined that the intended audience can effectively use this type of guidance instruction, we can start adding more user-oriented features (e.g.\ voice prompts, more pleasant tones, etc.) and integrate them into our guidance system prototype. 
 
 %Future research will focus on integrating voice and vibration feedback cues into the system.
 %We are also investigating solutions to automatically refine the parameters of the HMI and better match the individual user's navigation habits and capability, thereby increasing navigation performance and user satisfaction.
