@@ -142,7 +142,7 @@ A Tango-enabled device comes pre-equipped with powerful image-processing, locali
   \caption{Pictures of the Tango device and bone-conducting headphones the system is based on (left) and them in use in an experiment (right).}
 \end{figure}
 
-For this work, we implement and evaluate an audio guidance interface that will be implemented in the guidance system to provide navigation instructions to the user. 
+For this work, we implement and evaluate an audio interface that will be implemented in the guidance system to provide navigation instructions to the user. 
 To evaluate this guidance mode, we conducted a set of experiments involving a target-search task where the participants were guided with the audio instructions to point a camera at a set of virtual targets.
 The system uses a set of bone-conducting headphones to provide the audio instructions, with the latter being used to avoid interfering with a user's normal hearing function; something people with limited vision typically rely upon. 
 However, this type of headphones bypass the external structure of the ear which provide the ability to localise a sound source's elevation.
@@ -169,10 +169,10 @@ Therefore, this work contributes by determining how accurately a spatialised ton
   \caption{A diagram showing the device's frame of reference and the target's pan and tilt angles.}\label{fig:cam-coords}
 \end{figure}
 
-The remainder of this paper is organised as follows: \cref{sec:lit-review} gives an overview of existing navigation systems and audio interfaces for people living with visual impairments.
+The remainder of this paper is organised as follows: \cref{sec:lit-review} gives an overview of existing navigation systems and audio interfaces for people with visual impairments.
 \cref{sec:portable-navigation} discusses the navigation device's hardware and interface setup and describes how the target's position is conveyed to the user.
 The experiment we conducted are explained in \cref{sec:experiments} and the results are presented and discussed in \cref{sec:results}. 
-Finally, \cref{sec:conclusion} concludes this paper with a summary of the findings and comments on our future work. 
+Finally, \cref{sec:conclusion} concludes this paper with a summary of the findings and comments on future work. 
 
 \section{Previous Work}\label{sec:lit-review}
 
@@ -181,7 +181,7 @@ Bluetooth tags and a smartphone can be used in a similar manner~\cite{sato2017na
 However, the expense and effort of maintaining such tags make them less attractive for wide-scale adoption.
 Computer vision-based systems provide a good compromise between usability, cost and accuracy.
 One solution is to use RGB-D depth sensing cameras, which are becoming increasingly accurate and cost-effective, to build a 3D image map of the environment, and guiding a user through it~\cite{lee2015, rodriguez2012obstacle}.
-Alternatively, object recognition techniques can be used to detect various objects and landmarks, such as doors, staircases, etc., and communicate their relative location to the user~\cite{schauerte2012assistive, tian2013b, fiannaca2014headlock}, or use audio instructions to instruct a user with vision impairment to fully capture an object of interest~\cite{vazquez2012helping}. 
+Alternatively, object recognition techniques can be used to detect various objects and landmarks, such as doors, staircases, etc., and communicate their relative location to the user~\cite{schauerte2012assistive, tian2013b, fiannaca2014headlock}, or use audio instructions to guide a user to fully capture an object of interest~\cite{vazquez2012helping}. 
 
 %Attempting to deliver a system that allows people with visual impairments to independently navigate and accomplish everyday tasks is not new; in fact, there are multiple commercial systems and research prototypes already available on the market.
 %One approach that has been investigated is to outfit the existing white walking cane with various sensors, such as sonar, radar, motor encoders, etc.~\cite{ulrich1997, marion2008batcane} to warn the user of upcoming obstacles, instead of relying on haptic feedback from the impact between the cane and the obstacle.
@@ -293,7 +293,6 @@ With these limits, $f$ can be determined with
 \begin{equation}\label{eq:frequency}
   f(\theta) = 2^{b\theta + c},
 \end{equation}
-
 where $b$ and $c$ for each setting can be calculated with the given setting's pitch and angle limits and a linear graph equation (i.e.\ $f - f_1 = b(\theta - \theta_1), b=\frac{\Delta f}{\Delta\theta}$).
 
 \section{Target Search Experiment}\label{sec:experiments}
@@ -440,12 +439,12 @@ For the data collected from $G1$, there is a strong linear correlation between t
 The 3 settings have similar average errors and standard deviations, with the $m_m$ setting again producing the marginally best results with the smallest average error and standard deviation.
 However, the differences are relatively small (approximately 6\%) and are not significant enough (Friedman test $p = 0.92$) to conclude that the pitch gradient has an effect on the target acquisition accuracy performance in the pan dimension. 
 
-The data collected from $G2$ follow a similar trend to that of $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
+The data collected from $G2$ follow a similar trend to $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
 These results are summarised in \cref{tab:vi-results}.
 Unfortunately, not enough samples could be collected to draw any final conclusions.
 However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
 
-These results show that both groups managed to find the targets with reasonable level of accuracy and that the pan error is robust to changes to the pitch and its rate of change; a useful result in support of the effectiveness of this audio interface.
+These results show that both groups managed to find the targets with reasonable level of accuracy and that the pan error is robust to variations in the pitch's rate of change; a useful result in support of the effectiveness of this audio interface.
 
 \subsection{Tilt Results}\label{sec:tilt-results}
 
@@ -474,7 +473,7 @@ However, both settings conclusively produce more accurate results than the $m_l$
 %A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.04}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different than the $m_l$ setting ($p=0.0014$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42$).
 %This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns.
 
-From \cref{fig:err-boxplot-median} it can also be seen that the data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
+From \cref{fig:err-boxplot-median} it can be seen that the data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
 From the results, it is not completely clear what causes this negative bias in the pitch dimension.
 However, a possible explanation is that the floor introduces a position constraint within the participants' minds, since the target cannot appear below the ground.
 It can potentially appear above the participants' head though, giving variable upper an lower limits that depend on the participants' height and individual perception.
