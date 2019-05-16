@@ -81,7 +81,7 @@
 \begin{abstract}
 	Our aim is to build a portable active navigation system for the visually impaired that uses active perception techniques and a combination of feedback modes to identify a scene and guide a user to their destination.
 	Such a system requires a non-visual feedback interface and in this paper we investigate the effectiveness of a spatial audio tone with a varying pitch component, played through bone-conducting headphones, in conveying the pan and tilt angles of a target to the user in a pointing task.
-	The secondary goal is to determine how variations to the pitch rate of change of the pitch affects a user's performance.
+	The secondary goal is to determine how variations to the pitch rate of change affect the user's performance.
 	For this, we conducted a set of experiments with blindfolded and user with visual impairments and found that, with some limitations, a spatialised audio tone with a varying pitch component can successfully convey a target's pan and tilt angles. 
 \end{abstract} 
  \begin{CCSXML}
@@ -116,7 +116,7 @@ In particular, researchers in the active vision field have have made much progre
 There is, however, a significant research question about whether techniques from active machine vision can be applied to humans, i.e.\ can a machine identify a point of interest in a scene and direct a human, instead of an electronic servo, to focus on that point?
 If this can be done, it would be beneficial to people with visual impairments and will augment their ability to search for an arbitrary point or object of interest and identify an unknown scene. 
 
-To this end, we are developing a mobile navigation system using a Google Project Tango tablet device\footnote{https://web.archive.org/web/20170714185918/https://developers.google.com/tango/}, pictured in \cref{fig:tango-headphone}, that caters to the perception limitations of people with vision impairments by using a non-visual interface.
+To this end, we are developing a mobile navigation system using a Google Project Tango tablet device\footnote{\url{https://en.wikipedia.org/wiki/Tango_(platform)}}, pictured in \cref{fig:tango-headphone}, that caters to the perception limitations of people with vision impairments by using a non-visual interface.
 This system will ultimately allow users with visual impairments to reach a target location in the final leg of their journey, i.e.\ the so-called `last 10 yards' problem~\cite{google2016blind,bellotto2013}. 
 The ideas here can also be extended and applied to mainstream navigation tools, such as Google Maps.
 A Tango-enabled device comes pre-equipped with powerful image-processing, localisation and depth-perception capabilities and is built on top of a standard Android platform, providing access to the entire set of input/output options that this operating system has to offer.
@@ -248,7 +248,7 @@ The audio component is responsible for conveying the 2D position of a target on 
 The audio signal is a continuous \SI{10}{\hertz} sinusoidal sound wave that is played to the user through bone-conducting headphones.
 We use a sinusoidal wave here because it is relatively simple to manipulate and analyse and will be replaced by a richer, more natural tone at a later stage. 
 
-The audio is spatialised in the pan dimension using the OpenAL\footnote{http://openal.org} sound library's HRTF, while the tilt angle is conveyed by varying the audio tone's pitch.
+The audio is spatialised in the pan dimension using the OpenAL\footnote{\url{http://openal.org}} sound library's HRTF, while the tilt angle is conveyed by varying the audio tone's pitch.
 We use this approach because the external set of bone-conducting headphones plays the sound through a user's cheekbones instead of their outer ears, bypassing the ears' pennae that provide the ability to localise elevated sound sources~\cite{roffler1968factors, algazi2001elevation}.
 This makes an HRTF less effective in conveying the target's elevation and therefore needs to be conveyed using another method; by varying the tone's pitch in this case.
 The difference between the target's angular position and the device's angular orientation are used to generate the audio signals. 
@@ -259,7 +259,7 @@ The pan angle ($\phi$) describes the angle which the user needs to rotate the ca
 We use an HRTF to add a spatial element to the audio tone that is played to the user, placing the sound source at the target's location. 
 Humans determine a sound source's pan direction by subconsciously analysing the inter-aural time difference (IID) between a sound reaching both of your ears: the greater the IID, the greater the perceived angular distance to the sound source~\cite{wightman1992dominant}.
 
-We implement OpenAL's default HRTF, based on the MIT's KEMAR dataset\footnote{sound.media.mit.edu/resources/KEMAR.html}, to generate a sinusoidal sound wave based on the difference between the user and target's positions.
+We implement OpenAL's default HRTF, based on the MIT's KEMAR dataset\footnote{\url{http://sound.media.mit.edu/resources/KEMAR.html}}, to generate a sinusoidal sound wave based on the difference between the user and target's positions.
 The library takes position values as input and outputs a tone based on the angle between the two position vectors. 
 
 \subsubsection{Tilt Direction}
@@ -293,7 +293,7 @@ With these limits, $f$ can be determined with
 \begin{equation}\label{eq:frequency}
   f(\theta) = 2^{b\theta + c},
 \end{equation}
-where $b$ and $c$ for each setting can be calculated with the given setting's pitch and angle limits and a linear graph equation (i.e.\ $f - f_1 = b(\theta - \theta_1), b=\frac{\Delta f}{\Delta\theta}$).
+where $b$ and $c$ for each setting can be calculated according to the given setting's pitch and angle limits.% and a linear graph equation (i.e.\ $f - f_1 = b(\theta - \theta_1), b=\frac{\Delta f}{\Delta\theta}$).
 
 \section{Target Search Experiment}\label{sec:experiments}
 
