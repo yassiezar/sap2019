@@ -140,6 +140,7 @@ A Tango-enabled device comes pre-equipped with powerful image-processing, locali
     \caption{}\label{fig:participant}
   \end{subfigure}
   \caption{Pictures of the Tango device and bone-conducting headphones the system is based on (left) and them in use in an experiment (right).}
+  \Description{A pictures of the Tango device and bone conducting headset and another of them both in-use. }
 \end{figure}
 
 For this work, we implement and evaluate an audio interface that will be implemented in the guidance system to provide navigation instructions to the user. 
@@ -167,6 +168,7 @@ Therefore, this work contributes by determining how accurately a spatialised ton
   \centering
   \includegraphics[width=0.4\columnwidth]{figures/camera_coordinate.pdf}
   \caption{A diagram showing the device's frame of reference and the target's pan and tilt angles.}\label{fig:cam-coords}
+  \Description{A diagram of the device's frame of reference. }
 \end{figure}
 
 The remainder of this paper is organised as follows: \cref{sec:lit-review} gives an overview of existing navigation systems and audio interfaces for people with visual impairments.
@@ -238,6 +240,7 @@ The WiFi recording module is constantly monitoring the different parameter value
   \centering
   \includegraphics[clip=true, trim=0 120 80 50, width=1.0\columnwidth]{figures/pipeline.pdf}
   \caption{A diagram of the individual system components and their communication pipelines. $F$ indicates a feedback signal and $P$ a pose signal. }\label{fig:pipeline}
+  \Description{Diagram of the system pipeline.  }
 \end{figure}
 
 \subsection{Audio Interface}
@@ -284,6 +287,7 @@ The values of $m_l, m_m, m_h$ are visualised in \cref{fig:pitch-gain}.
   \centering
   \includegraphics[clip, trim=0 0 0 40, width=1.0\columnwidth]{figures/pitch_gain_functions.png}
   \caption{The pitch gain functions for the 3 different gain settings ($y$-axis in log scale). }\label{fig:pitch-gain}
+  \Description{Plots showing the 3 different pitch gradient settings. }
 \end{figure}
 
 We set the range of angles the system can convey to $[-\frac{\pi}{2}; \frac{\pi}{2}]$; anything outside this range implies that the target is behind the user and was not considered in this series of experiments. 
@@ -371,30 +375,35 @@ The results for $G1$ are summarised in \cref{tab:results}, while the results for
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
   \caption{Angular error data for the $m_l$ setting. }\label{fig:err-results-lo}
+  \Description{Angular error results for the low setting.}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
   \caption{Angular error data for the $m_m$ setting. }\label{fig:err-results-med}
+  \Description{Angular error results for the medium setting.}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
   \caption{Angular error data for and the $m_h$ setting. }\label{fig:err-results-hi}
+  \Description{Angular error results for the high setting.}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=20 -70 100 100, width=1.0\columnwidth]{figures/err_boxplot_medians.png}
   \caption{Error medians for the pan and tilt dimension and each gradient setting.} \label{fig:err-boxplot-median}
+  \Description{Angular error medians for each gradient setting. }
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[clip, trim=80 -70 100 0, width=1.0\columnwidth]{figures/err_boxplot_std.png}
   \caption{Error standard deviations for the pan and tilt dimensions and each gradient setting.}\label{fig:err-boxplot-std}
+  \Description{Angular error standard deviations for each gradient setting. }
 \end{figure}
 
 \begin{table}
