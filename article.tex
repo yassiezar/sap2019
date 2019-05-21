@@ -105,17 +105,17 @@
 \renewcommand{\shortauthors}{JC Lock et al.}
 
 \begin{abstract}
-	Our aim is to build a portable active navigation system for the visually impaired that uses active perception techniques and a combination of feedback modes to identify a scene and guide a user to their destination.
+	Our aim is to build a portable active navigation system for people with visual impairments that uses active perception techniques and a combination of feedback modes to identify a scene and guide a user to their destination.
 	Such a system requires a non-visual feedback interface and in this paper we investigate the effectiveness of a spatial audio tone with a varying pitch component, played through bone-conducting headphones, in conveying the pan and tilt angles of a target to the user in a pointing task.
-	The secondary goal is to determine how variations to the pitch rate of change affect the user's performance.
-	For this, we conducted a set of experiments with blindfolded and user with visual impairments and found that, with some limitations, a spatialised audio tone with a varying pitch component can successfully convey a target's pan and tilt angles. 
+	The secondary goal is to determine how variations to the pitch's rate of change affect the user's performance.
+	For this, we conducted a set of experiments with both blindfolded participants and participants with visual impairments and found that, with some limitations, a spatialised audio tone with a varying pitch component can successfully convey a target's pan and tilt angles. 
 \end{abstract} 
 
 \section{Introduction}
 
 In recent years, governments have spearheaded numerous initiatives to support people with disabilities and enable them to play a more active role in modern society.
-In the UK, the Royal National Institute of Blind People (RNIB) has prioritised enabling people with visual impairments to use some of the services and products many people take for granted, such as public transport and cellphones~\cite{rnib-objectives}.
-Improvements in modern computing have made it possible for new and innovative solutions for these problems to come to the fore.
+In the UK, the Royal National Institute of Blind People (RNIB) has prioritised enabling people with visual impairments to use some of the services and products many people take for granted, such as public transport and mobile apps~\cite{rnib-objectives}.
+Improvements in modern computing have made it possible for new and innovative solutions to these problems to come to the fore.
 In particular, researchers in the active vision field have have made much progress in enabling machines to autonomously manipulate cameras to gather information about an environment for mapping and object and face tracking tasks~\cite{bajcsy2018revisiting}.
 There is, however, a significant research question about whether techniques from active machine vision can be applied to humans, i.e.\ can a machine identify a point of interest in a scene and direct a human, instead of an electronic servo, to focus on that point?
 If this can be done, it would be beneficial to people with visual impairments and will augment their ability to search for an arbitrary point or object of interest and identify an unknown scene. 
@@ -126,11 +126,6 @@ The ideas here can also be extended and applied to mainstream navigation tools, 
 A Tango-enabled device comes pre-equipped with powerful image-processing, localisation and depth-perception capabilities and is built on top of a standard Android platform, providing access to the entire set of input/output options that this operating system has to offer.
 %The final system will use multiple feedback modes (vibration, audio and voice) to guide a user toward a target destination while providing information on any oncoming obstacles.
 
-%\begin{figure}
-  %\centering
-  %\includegraphics[width=0.5\columnwidth]{figures/tango_headphone.png}
-  %\caption{The Tango device and bone-conducting headset the system is based on. }\label{fig:tango-headphone}
-%\end{figure}
 \begin{figure}
   \centering
   \begin{subfigure}[t]{0.5\columnwidth}
@@ -143,11 +138,11 @@ A Tango-enabled device comes pre-equipped with powerful image-processing, locali
     \includegraphics[width=0.7\columnwidth]{figures/vi_participant.pdf}
     \caption{}\label{fig:participant}
   \end{subfigure}
-  \caption{Pictures of the Tango device and bone-conducting headphones the system is based on (left) and them in use in an experiment (right).}
+  \caption{Pictures of the Tango device and bone-conducting headphones the system is based on (left) and both in use in an experiment (right).}
   \Description{A pictures of the Tango device and bone conducting headset and another of them both in-use. }
 \end{figure}
 
-For this work, we implement and evaluate an audio interface that will be implemented in the guidance system to provide navigation instructions to the user. 
+For this work, we implement and evaluate an audio interface that will be integrated into the guidance system to provide navigation instructions to the user. 
 To evaluate this guidance mode, we conducted a set of experiments involving a target-search task where the participants were guided with the audio instructions to point a camera at a set of virtual targets.
 The system uses a set of bone-conducting headphones to provide the audio instructions, with the latter being used to avoid interfering with a user's normal hearing function; something people with limited vision typically rely upon. 
 However, this type of headphones bypass the external structure of the ear which provide the ability to localise a sound source's elevation.
@@ -155,8 +150,8 @@ We therefore use a tone of varying pitch to convey the target's tilt position w.
 The tone is spatialised to provide the target's position in the pan dimension.
 A similar interface can be found in~\cite{durette2008visuo}, where they used a varying pitch component without spatialising the tone. 
 However, they did not investigate this interface's target-finding accuracy.
-Furthermore, we wish to determine how changing the pitch's rate of change will affect target-finding performance. 
-Therefore, this work contributes by determining how accurately a spatialised tone with varying pitch can direct a user towards a target, and how the pitch's rate of change affects this accuracy.
+Furthermore, we wish to determine how modifying the pitch's rate of change will affect target-finding performance. 
+Therefore, this work contributes to the body of knowledge by determining how accurately a spatialised tone with varying pitch can direct a user towards a target, and how the pitch's rate of change affects this accuracy.
 
 %In this paper we focus on the audio feedback mode and discuss how it is used in our system.
 %We present experiments we performed to determine its effectiveness at directing a user to complete a pointing task and how its parameters affect users' target-search performance.
@@ -222,7 +217,7 @@ However, to our knowledge no extensive work or experiments have been done to det
 
 \subsection{System Setup}
 
-Our ultimate goal is to deliver a navigation system that can guide a user with visual impairments on the last leg of their journey, e.g.\ to a specific aisle and shelf in a shop, using only a mobile phone.
+Our ultimate goal is to deliver a navigation system that can guide a user with visual impairments on the last leg of their journey (e.g.\ to a specific aisle and shelf in a shop) using only a mobile phone.
 A large amount of data need to be translated from a visual form into a format that is useful to people with limited or no vision.
 We therefore plan to use a combination of voice, audio and vibration cues to translate visual navigation data as effectively as possible and overcome the bandwidth limitation of the human ear. 
 However, for this paper, we only considered the spatialised audio mode and its variation in pitch in order to determine its effectiveness in conveying a target's pan and tilt angles.
@@ -230,9 +225,9 @@ However, for this paper, we only considered the spatialised audio mode and its v
 \begin{anonsuppress}
 The system is based on a concept proposed in~\cite{bellotto2013, lock2017portable}, which uses a Google Tango device.
 \end{anonsuppress}
-The navigation system is based on a Google Tango tablet, an Android-based device that comes equipped with an RGB-D cameras to sense colour and depth and combines an inertial measurement unit with powerful and robust landmark recognition and image processing algorithms to localise itself in real-time.
+The navigation system is based on a Google Tango tablet, an Android-based device that comes equipped with an RGB-D camera to sense colour and depth and combines an inertial measurement unit (IMU) with powerful and robust landmark recognition and image processing algorithms to localise itself in real-time.
 An added benefit of this platform is its familiar, compact form-factor which will help overcome the hurdle of user-acceptance and usability.
-We also use a set of bone-conducting headphones (see \cref{fig:tango-headphone}) that are placed externally on a user's head so that the system does not occlude the perception of real-world sounds and does not interfere with a user's normal hearing function.
+The guidance instructions are presented through a set of bone-conducting headphones (see \cref{fig:tango-headphone}) that are placed externally on a user's head so that the system does not occlude the perception of real-world sounds and does not interfere with a user's normal hearing function.
 %In the future, we will use multiple feedback modes to provide the user with navigation and obstacle avoidance instructions.
 
 A diagram of the experimental system pipeline is shown in \cref{fig:pipeline}, where the arrows indicate the direction of the flow of information.
@@ -271,7 +266,7 @@ The library takes position values as input and outputs a tone based on the angle
 
 \subsubsection{Tilt Direction}
 
-The system adjusts the tone's pitch ($f$) to convey the target's tilt angle ($\theta$) w.r.t.\ $C$, as shown in \cref{fig:cam-coords}. 
+The system adjusts the tone's pitch ($f$) to convey the target's tilt angle ($\theta$) w.r.t.\ $C$. 
 Here, a high pitch means the target is above $C$ (i.e.\ the user should look up) and a low pitch means the target is below $C$ (the user should look down).
 This high/low association scheme is chosen because humans naturally associate high-pitched sounds with higher objects and lower-pitched noises with lower objects~\cite{pratt1930spatial, blauert1997spatial}.
 We use a logarithmic, octave-based gain function for the pitch, since an increase in octave provides a distinct perceptible change while keeping the timbre roughly constant~\cite{shepard1964circularity}.
@@ -284,7 +279,7 @@ Furthermore, for the sake of consistency and between the different settings, eac
 After practical tests with the device and headphones, we set the neutral, on-target tone to $f_{512} =$ \SI{512}{\hertz} for its audibility.
 For $m_l$, we set $f_{max}$ and $f_{min}$ to 1 octave higher and lower than $f_{512}$, giving limits of \SI{1024}{\hertz} and \SI{256}{\hertz} respectively.
 For $m_m$, the $f_{max}$ and $f_{min}$ are set to 2 octaves higher and lower than $f_{512}$ (\SI{2048}{\hertz} and \SI{128}{\hertz}) and $m_h$ to 3 octaves higher and lower (\SI{4096}{\hertz} and \SI{64}{\hertz}).
-We selected these limits for practical reasons, given the fact that the bone conducting headphones we use have low volume gain at the frequency spectrum extremes, making it difficult to hear. 
+These limits were selected for practical reasons, because the bone conducting headphones have low volume gain at the frequency spectrum extremes, making it difficult to hear. 
 The values of $m_l, m_m, m_h$ are visualised in \cref{fig:pitch-gain}.
 
 \begin{figure}
@@ -311,20 +306,20 @@ Furthermore, we wish to see how changes to $m$ affect a user's performance.
 We recruited 2 groups of participants for the experiments.
 Group $G1$ consists of 42 young adults (mostly students) with healthy eyesight, with 10 males and 32 females being $20\pm1.5$ years old on average.
 This group was blindfolded throughout the experiment and forms the bulk of the participant population.
-Group $G2$ is made up of 3 legally blind adults with varying levels of vision limits (3 males, average age of $40\pm8$ years). 
-This group makes up less than 10\% of the total population, but provided valuable subjective feedback that will help improve the system before evaluating it with a larger group of people with vision impairments. 
-All participants joined the experiment on a voluntary basis with written consent and none have any other impairments that affects their interpretation of the audio guidance cues.
+Group $G2$ is made up of 3 legally blind adults with little to no light perception (3 males, average age of $40\pm8$ years). 
+This group makes up less than 10\% of the total experiment population, but provided valuable subjective feedback that will help improve the system before evaluating it with a larger group of people with vision impairments. 
+All participants joined the experiment on a voluntary basis with written consent and have no other impairments that affected their interpretation of the audio guidance cues.
 
 For the experiment, the participants were given a Tango tablet device, running an app written for this experiment, and a pair of AfterShockz Sportz3' bone conducting headphones (both pictured in use in \cref{fig:participant}) and were blindfolded where appropriate.
-The app generates a virtual target, one at a time and a constant \SI{2}{\metre} from the participant, and uses the device's measurements to determine $\phi$ and $\theta$.
+The app generates a virtual target, one at a time at a constant \SI{2}{\metre} from the participant, and uses the device's pose measurements to determine $\phi$ and $\theta$.
 These angles are then used to generate and present the user with the audio signal to direct them to the target. 
 As the participant rotates the camera, $\phi$ and $\theta$ are adjusted and the audio signal changes to reflect these changes.
-When a participant believed that they were pointing at the target, they tapped the screen which generated a new target target which they were then directed to. 
+When a participant believes that they are pointing at the target, they tap the screen which generates a new target target which they are then directed to. 
 Each participant was given 28 targets in total that were randomly generated and equally spread across 4 quadrants to avoid clustering. 
 After the 28 targets were found, $m$ was adjusted and the experiment was repeated. 
-The order in which the gradient setting was changed for each participant was randomised to minimise any the learning effect.
+The order in which the gradient setting was changed for each participant was randomised to minimise the learning effect.
 The app streams various data on the current device and target poses to a laptop computer via a WiFi connection in real-time. 
-Before the experiment session started, each participant was given some time to familiarise themselves with the device and the audio tone and was given the opportunity to learn what the $f_{512}$ `on-target' and on-centre tone sounds like that will mean that they are pointing at the target.
+Before the experiment session started, each participant was given some time to familiarise themselves with the device and was given the opportunity to learn what the $f_{512}$ `on-target' and on-centre tone sounds like that will mean that they are pointing at the target.
 
 %\begin{figure}
   %\centering
@@ -333,7 +328,7 @@ Before the experiment session started, each participant was given some time to f
 %\end{figure}
 
 The measure of performance here is the accuracy with which a user points the camera towards a target.
-The accuracy is taken as the angular difference between the device's and target's poses at the time the participant tapped the screen.
+The accuracy is taken as the angular difference between $C$ and the target's position at the time the participant tapped the screen.
 A smaller error indicates more accurate results.
 The pan and tilt results are separated to understand the effect of changing the gradient setting has on either dimension's accuracy.
 To minimise the speed/accuracy biases in the results, we asked the participants to focus on finding the targets as well as they could without worrying about the time it took.  
@@ -371,43 +366,80 @@ To minimise the speed/accuracy biases in the results, we asked the participants 
 
 \section{Results and Discussion}\label{sec:results}
 
-The results for the participants are given by the 2D histograms in \crefrange{fig:err-results-lo}{fig:err-results-hi}, where the pan error is on the abscissa and the tilt error on the ordinates.
-A set of box-plots of the angular errors' median and standard deviations are given in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} for the $m_l, m_m$ and $m_h$ settings. 
+The results for the participants are given by the 2D histograms in \cref{fig:err-results}, where the pan error is on the abscissa and the tilt error on the ordinates.
+A set of box-plots of the angular errors' median and standard deviations are given in \cref{fig:err-boxplot} for the $m_l, m_m$ and $m_h$ settings. 
 The results for $G1$ are summarised in \cref{tab:results}, while the results for $G2$ are given in \cref{tab:vi-results}.
 
-\begin{figure}
-  \centering
-  \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
-  \caption{Angular error data for the $m_l$ setting. }\label{fig:err-results-lo}
-  \Description{Angular error results for the low setting.}
-\end{figure}
+%\begin{figure}
+  %\centering
+  %\includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_lo.png}
+  %\caption{Angular error data for the $m_l$ setting. }\label{fig:err-results-lo}
+  %\Description{Angular error results for the low setting.}
+%\end{figure}
+
+%\begin{figure}
+  %\centering
+  %\includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
+  %\caption{Angular error data for the $m_m$ setting. }\label{fig:err-results-med}
+  %\Description{Angular error results for the medium setting.}
+%\end{figure}
+
+%\begin{figure}
+  %\centering
+  %\includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
+  %\caption{Angular error data for the $m_h$ setting. }\label{fig:err-results-hi}
+  %\Description{Angular error results for the high setting.}
+%\end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_med.png}
-  \caption{Angular error data for the $m_m$ setting. }\label{fig:err-results-med}
-  \Description{Angular error results for the medium setting.}
+  \begin{subfigure}[t]{0.8\columnwidth}
+    \centering
+    \includegraphics[clip, trim=450 0 450 110, width=1.0\columnwidth]{figures/err_lo.png}
+    \caption{Results for the $m_l$ setting. }\label{fig:err-results-lo}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.8\columnwidth}
+    \centering
+    \includegraphics[clip, trim=450 0 450 110, width=1.0\columnwidth]{figures/err_med.png}
+    \caption{Results for the $m_m$ setting. }\label{fig:err-results-med}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.8\columnwidth}
+    \centering
+    \includegraphics[clip, trim=450 0 450 110, width=1.0\columnwidth]{figures/err_hi.png}
+    \caption{Results for the $m_h$ setting. }\label{fig:err-results-hi}
+  \end{subfigure}
+  \caption{Angular error data for the 3 gradient settings. }\label{fig:err-results}
+  \Description{Angular error results  for the 3 different gradient settings.}
 \end{figure}
+
+%\begin{figure}
+  %\centering
+  %\includegraphics[clip, trim=20 -70 100 100, width=1.0\columnwidth]{figures/err_boxplot_medians.png}
+  %\caption{Error medians for the pan and tilt dimension and each gradient setting.} \label{fig:err-boxplot-median}
+  %\Description{Angular error medians for each gradient setting. }
+%\end{figure}
+
+%\begin{figure}
+  %\centering
+  %\includegraphics[clip, trim=80 -70 100 0, width=1.0\columnwidth]{figures/err_boxplot_std.png}
+  %\caption{Error standard deviations for the pan and tilt dimensions and each gradient setting.}\label{fig:err-boxplot-std}
+  %\Description{Angular error standard deviations for each gradient setting. }
+%\end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[clip, trim=450 0 450 110, width=0.8\columnwidth]{figures/err_hi.png}
-  \caption{Angular error data for and the $m_h$ setting. }\label{fig:err-results-hi}
-  \Description{Angular error results for the high setting.}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[clip, trim=20 -70 100 100, width=1.0\columnwidth]{figures/err_boxplot_medians.png}
-  \caption{Error medians for the pan and tilt dimension and each gradient setting.} \label{fig:err-boxplot-median}
-  \Description{Angular error medians for each gradient setting. }
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics[clip, trim=80 -70 100 0, width=1.0\columnwidth]{figures/err_boxplot_std.png}
-  \caption{Error standard deviations for the pan and tilt dimensions and each gradient setting.}\label{fig:err-boxplot-std}
-  \Description{Angular error standard deviations for each gradient setting. }
+  \begin{subfigure}[t]{1.0\columnwidth}
+    \centering
+    \includegraphics[clip, trim=20 -70 100 100, width=1.0\columnwidth]{figures/err_boxplot_medians.png}
+    \caption{The medians. }\label{fig:err-boxplot-median}
+  \end{subfigure}
+  \begin{subfigure}[t]{1.0\columnwidth}
+    \centering
+    \includegraphics[clip, trim=80 -70 100 0, width=1.0\columnwidth]{figures/err_boxplot_std.png}
+    \caption{The standard deviations. }\label{fig:err-boxplot-std}
+  \end{subfigure}
+  \caption{Boxplots for the error medians and standard deviations. }\label{fig:err-boxplot}
+  \Description{A set of boxplots showing the spread of the error standard deviations and medians. }
 \end{figure}
 
 \begin{table}
@@ -445,7 +477,7 @@ The results for $G1$ are summarised in \cref{tab:results}, while the results for
 
 \subsection{Pan Results}
 
-\crefrange{fig:err-results-lo}{fig:err-results-hi} and the median and mean points from the box-plots in \crefrange{fig:err-boxplot-median}{fig:err-boxplot-std} show that the data in the pan dimension are approximately normally distributed around zero.
+\cref{fig:err-results} and the median and mean points from the boxplots in \cref{fig:err-boxplot} show that the data in the pan dimension are approximately normally distributed around zero.
 However, a Shapiro-Wilkes test score below the critical threshold do not give enough confidence to consider the data as normally distributed and we therefore analyse the data through non-parametric techniques. 
 
 For the data collected from $G1$, there is a strong linear correlation between the participants' guesses and the targets' true pan angles, shown by the high Spearman correlation scores of approximately 0.75 ($p < 0.01$) for all of the datasets, with the $m_m$ setting displaying the marginally best result of 0.77.
@@ -453,7 +485,7 @@ The 3 settings have similar average errors and standard deviations, with the $m_
 However, the differences are relatively small (approximately 6\%) and are not significant enough (Friedman test $p = 0.92$) to conclude that the pitch gradient has an effect on the target acquisition accuracy performance in the pan dimension. 
 
 The data collected from $G2$ follow a similar trend to $G1$: the error in the pan dimension is centred around \SI{0}{\radian} with similar standard deviations across all 3 settings.
-These results are summarised in \cref{tab:vi-results}.
+%These results are summarised in \cref{tab:vi-results}.
 Unfortunately, not enough samples could be collected to draw any final conclusions.
 However, these results are in line with results from previous work~\cite{zwiers2001spatial}, indicating that the groups with partial and normal eyesight respond with similar levels of accuracy to spatialised sound when presented with simple tasks. 
 
@@ -466,7 +498,7 @@ These results show that both groups managed to find the targets with reasonable 
 %All of the results are summarised in \cref{tab:results}. 
 %The data here are also considered not normally distributed following inspections of the Q-Q plots and Shapiro-Wilkes test results and are analysed accordingly.
 
-The data within the tilt dimension are also found to be non-normal following scores below the critical threshold from the Shapiro-Wilkes test.
+The data within the tilt dimension were also found to be non-normal following scores below the critical threshold from the Shapiro-Wilkes test.
 The Spearman test for the data reveals a reasonably significant correlation between the participants' guesses and the actual locations of the targets, with correlation scores of approximately 0.38 for $m_l$, 0.48 for $m_m$ and the $m_h$ gradient giving the strongest correlation score with 0.55 ($p < 0.01$ for all 3 settings).
 This indicates that the participants generally interpret the cues from the varying the pitch correctly and are mostly successful at pointing the camera in the correct tilt angle.
 
@@ -486,26 +518,26 @@ However, both settings conclusively produce more accurate results than the $m_l$
 %A post-hoc analysis with a Wilcoxon signed rank test and a critical threshold with a Bonferroni correction applied for the 3 settings ($\alpha=0.016=\frac{0.04}{3}$) shows that both the $m_m$ and $m_h$ settings are significantly different than the $m_l$ setting ($p=0.0014$ for both settings), but that the $m_m$ and $m_h$ settings do not produce significantly different results from one another ($p=0.42$).
 %This indicates there is an inflection point where increasing $\frac{df}{d\theta}$ produces diminishing returns.
 
-From \cref{fig:err-boxplot-median} it can be seen that the data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
+From \cref{fig:err-boxplot-median} it can be seen that the median data show a significant skewing to the negative side, indicating a potential bias amongst the experiment's participant-base that must be taken into account.
 From the results, it is not completely clear what causes this negative bias in the pitch dimension.
-However, a possible explanation is that the floor introduces a position constraint within the participants' minds, since the target cannot appear below the ground.
-It can potentially appear above the participants' head though, giving variable upper an lower limits that depend on the participants' height and individual perception.
+However, a possible explanation is that the floor introduces a position constraint within a user's mind, since the target cannot appear below the ground.
+It can potentially appear above the user's head though, giving variable upper an lower limits that depend on the user's height and individual perception.
 Future improvements to our audio interface should consider a non-linear increase in pitch as a function of tilt angle instead of the linear one we used in this work to remedy this bias.
 
 The results collected from $G1$ and $G2$ show that a varying pitch tone can convey the tilt angle of a target to a human using bone-conducting headphones with accuracy levels similar to that in literature~\cite{bujacz2011sonification, katz2011spatial, zotkin2004rendering}.
-They also highlight a clear and significant difference between the 3 different pitch gain gradients, with the $m_l$ setting giving the lowest acquisition accuracy, while $m_m$ and $m_h$ give similar accuracy levels closest to the true tilt. 
+They also highlight a clear and significant difference between the 3 different pitch gain gradients, with the $m_l$ setting giving the lowest acquisition accuracy, while $m_m$ and $m_h$ give similar accuracy levels closest to the target's true tilt. 
 
 \subsection{Participants with Visual Impairment's Feedback}
 
 After the experiments with the participants with visual impairments in $G2$ were completed, we took the opportunity to collect their feedback on the audio interface's current implementation and gather suggestions for improvements for future iterations.
-When asked about their opinions on current assistive systems available on the market, the general consensus was that these systems are typically too prohibitively expensive, too complex and cumbersome to be useful for everyday use.
+When asked about their opinions on current assistive systems available on the market, the general consensus was that these systems are typically prohibitively expensive, too complex and cumbersome to be useful for everyday use.
 Indeed, they seemed quite enthusiastic about a guidance system that they can use on a mobile phone.
 
-They were also generally satisfied with the guidance interface in its current form and had little problem learning how to use it.
+They were generally satisfied with the guidance interface in its current form and had little problem learning how to use it.
 However, they, along with the participants in $G1$, reported auditory fatigue caused by long-term exposure to the sinusoidal audio tone.
 We were aware of this issue before the experiments were conducted and have considered replacing the simple sine wave tone with more natural and pleasant sounds.
 For example, musical instruments can be used to play different notes and scales to indicate different elevation angles~\cite{brewster1998using}.
-Furthermore, they suggested adding some voice component or tone prompt to confirm when they are on target, inform them of other important events or happenings or simply to intermittently assure them that the system is still active and that they are still on course.
+Furthermore, they suggested adding some voice component or tone prompt to confirm when they are on target, inform them of other important events or happenings or simply to intermittently assure them that the system is still active.
 The former two suggestions were intentionally ignored in order to purely evaluate how accurately the audio tone can guide a user to the target.
 Going forward, however, these suggestions will be helpful for a potential commercial release version of the guidance system to make the guidance instructions clearer and to intermittently reassure users that they are still on the right course, for example.
 
@@ -536,12 +568,12 @@ None of the participants had any technical issues using the headphones or mobile
 \section{Conclusion and Future Work}\label{sec:conclusion}
 
 In this work, we present an audio-based guidance interface that uses a spatialised audio tone with varying pitch to direct a user with visual impairments to point a camera toward a target. 
-We also present and discuss a set of experiments that were conducted  to determine the interface's effectiveness and performance, as well as some subjective feedback that was collected from participants with partial eyesight. 
+We also present and discuss a set of experiments that were conducted to determine the interface's effectiveness and performance, as well as some subjective feedback that was collected from legally blind participants. 
 
 Using a set of bone-conducting headphones, we found that a spatialised audio tone with a varying pitch can successfully convey the pan and tilt angles of a target.
 The angular errors made by the participants are in line with those from previous research using similar audio guidance instructions.
 We also found that varying the pitch's rate of change influences the accuracy of the system in the tilt dimension without affecting the performance in the pan dimension.
-The steeper, $m_h$ and $m_m$ pitch gradients were found to produce the best results in this respect.
+The steeper, $m_h$ and $m_m$ pitch gradients were found to produce the best accuracy results in general.
 %Furthermore, we discovered a logarithmic relationship between the index of difficulty of a target and the time taken by a participant to find it, confirming that the results with our interface adhere to Fitts's Law.
 %However, there is a compromise to be made between speed and accuracy, with the $m_h$ pitch-gain gradient directing the user to the target in the longest time. 
 
@@ -550,7 +582,7 @@ However, they noted that the sine wave audio signal induced audio fatigue after 
 Using vocal feedback in conjunction with the current audio signal was also suggested. 
 
 These results are more interesting from a design point of view than an end-user's. 
-Indeed, we have shown that this audio guidance interface is effective at driving an average person, but more data are needed with the intended audience in order to decisively conclude that this interface will be effective in an indoor guidance system for people with vision impairments. 
+Indeed, we have shown that this audio guidance interface is effective at directing an average person, but more data are needed with the intended audience in order to decisively conclude that this interface will be effective in an indoor guidance system for people with vision impairments. 
 Nevertheless, these data are a good indication of what to expect when we evaluate this audio interface with a greater number of people with limited vision.
 Once we have determined that the intended audience can effectively use this type of guidance instruction, we can start adding more user-oriented features (e.g.\ voice prompts, more pleasant tones, etc.) and integrate them into our guidance system prototype. 
 
